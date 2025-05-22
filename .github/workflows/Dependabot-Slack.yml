@@ -1,0 +1,18 @@
+name: 'Dependabot-Critical-Slack-Alerts'
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # every midnight GMT
+  workflow_dispatch:  # Allow manual triggering
+jobs:
+  main:
+    runs-on:
+        labels: [self-hosted,dev-image-builder]
+    steps:
+      # X.X.X - Latest version available at: https://github.com/kunalnagarco/action-cve/releases
+      - uses: kunalnagarco/action-cve@main
+        with:
+          token: ${{ secrets.GH_PAT }}
+          severity: critical
+          slack_webhook: ${{ secrets.SLACK_VULNERABILITY_ALERTS_TOKEN }}
+          count: 20

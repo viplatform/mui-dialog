@@ -1,0 +1,75 @@
+name: Publish Package
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    permissions:
+      contents: write
+      packages: write
+      pull-requests: write
+
+    runs-on:
+      labels: [self-hosted, dev-image-builder]
+    env:
+      CONFIG_TYPE: "UAT"
+      REACT_APP_ASSET_BASE_URL: "https://assets.virtualinternships.com/vi-dialog"
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install-aws-cli
+        uses: unfor19/install-aws-cli-action@v1
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.PROD_S3_AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.PROD_S3_AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-2
+
+      - name: Upload files to S3 with AWS CLI
+        run: |
+          aws sts get-caller-identity
+          aws s3 sync ./assets/ s3://assets.virtualinternships.com/vi-dialog --delete
+
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v2.0
+        with:
+          envkey_REACT_APP_ASSET_BASE_URL: "https://assets.virtualinternships.com/vi-dialog"
+
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v2.0
+        with:
+          envkey_REACT_APP_ASSET_BASE_URL: "https://assets.virtualinternships.com/vi-dialog"
+
+      - name: Setup Nodejs and npm
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@viplatform"
+
+      - name: Install dependencies
+        run: npm install
+
+      - run: npm install husky
+
+      - name: Build the package
+        run: npm run build
+
+      - name: Stash uncommitted changes
+        run: git stash --include-untracked
+
+      - name: Commit version bump
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: Publish to GitHub Packages
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN_PACKAGES }}

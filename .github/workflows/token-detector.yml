@@ -1,0 +1,39 @@
+name: Detect token via gitleaks
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+      
+  push:
+    branches:
+      - main
+      - develop
+jobs:
+  scan:
+    permissions:
+      contents: write
+      pull-requests: write
+      checks: write
+    name: gitleaks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        id: gitleaks
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE}}
+    
+      - name: Notify Token Detected
+        if: failure() # if:  ${{ steps.gitleaks.outputs.exitcode == 1 || steps.gitleaks.outputs.exit-code != 0 }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        id: slack-token-notify
+        with:
+          channel_id: ${{ secrets.SLACK_CHANNEL_ID }}
+          status: Token Detected. Check Report at workflow.
+          color: warning
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
