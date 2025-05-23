@@ -1,16 +1,17 @@
-import { forwardRef } from 'react';
-import Dialog from '@mui/material/Dialog';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import CloseIcon from '@mui/icons-material/Close';
-import LoadingButton from '@mui/lab/LoadingButton';
-import Slide, { SlideProps } from '@mui/material/Slide';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme } from '@mui/material/styles';
-import { Divider } from '@mui/material';
-import _noop from 'lodash/noop';
+import { forwardRef } from "react";
+import Dialog from "@mui/material/Dialog";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import CloseIcon from "@mui/icons-material/Close";
+import LoadingButton from "@mui/lab/LoadingButton";
+import Slide, { SlideProps } from "@mui/material/Slide";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { ThemeProvider, useTheme } from "@mui/material/styles";
+import { Divider } from "@mui/material";
+import _noop from "lodash/noop";
 
-import { checkIfTertiaryCtaIsAllowed } from './helpers/viDialog.general';
+import { checkIfTertiaryCtaIsAllowed } from "./helpers/viDialog.general";
+import { muiTheme } from "../muiTheme";
 
 import {
   MODAL_TYPES,
@@ -19,25 +20,30 @@ import {
   MODAL_SIZE_VS_CLASS_NAMES,
   MODAL_SIZES,
   TERTIARY_CTA_TYPES,
-} from './constants/viDialog.types';
+} from "./constants/viDialog.types";
 import {
   ConfirmationModalProps,
   InformationModalProps,
   InputModalProps,
-} from './constants/viDialog.interfaces';
+} from "./constants/viDialog.interfaces";
 
-import './viDialog.scss';
+import "./viDialog.scss";
 
-type ModalProps = InformationModalProps | ConfirmationModalProps | InputModalProps;
+type ModalProps =
+  | InformationModalProps
+  | ConfirmationModalProps
+  | InputModalProps;
 
 // Properly typed transition component
-const TransitionUp = forwardRef<HTMLDivElement, SlideProps>(function Transition(props, ref) {
-  return <Slide direction='up' ref={ref} {...props} />;
-});
+const TransitionUp = forwardRef<HTMLDivElement, SlideProps>(
+  function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+  }
+);
 
 const ViDialog = (props: ModalProps) => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const subtype =
     props.type === MODAL_TYPES.INFORMATION
       ? (props as InformationModalProps).subtype
@@ -45,7 +51,7 @@ const ViDialog = (props: ModalProps) => {
         ? (props as ConfirmationModalProps).subtype
         : props.type === MODAL_TYPES.INPUT
           ? (props as InputModalProps).subtype
-          : 'default';
+          : "default";
 
   const {
     wrapperClassName,
@@ -61,7 +67,7 @@ const ViDialog = (props: ModalProps) => {
     showActions = true,
     showDivider = true,
     showCloseIcon = true,
-    tertiaryCtaType = 'default',
+    tertiaryCtaType = "default",
     ...rest
   } = props;
   const {
@@ -81,76 +87,123 @@ const ViDialog = (props: ModalProps) => {
 
   const config = MODAL_CONFIGS[type][subtype] || MODAL_CONFIGS[type].default;
   const defaultSize = config?.ALLOWED_SIZES[0] || MODAL_SIZES.SMALL;
-  const selectedSize = size && config?.ALLOWED_SIZES?.includes(size) ? size : defaultSize;
+  const selectedSize =
+    size && config?.ALLOWED_SIZES?.includes(size) ? size : defaultSize;
   const showFooter = showActions && (primaryCtaTitle || secondaryCtaTitle);
   const showFooterDivider =
-    showDivider && (selectedSize === MODAL_SIZES.LARGE || selectedSize === MODAL_SIZES.EXTRA_LARGE);
-  const isTertiaryCtaAllowed = checkIfTertiaryCtaIsAllowed(type, subtype, selectedSize);
+    showDivider &&
+    (selectedSize === MODAL_SIZES.LARGE ||
+      selectedSize === MODAL_SIZES.EXTRA_LARGE);
+  const isTertiaryCtaAllowed = checkIfTertiaryCtaIsAllowed(
+    type,
+    subtype,
+    selectedSize
+  );
   const showTertiaryCta = isTertiaryCtaAllowed && tertiaryCtaTitle;
 
   const handleClose = () => {
-    if (config?.DISMISSIBLE === 'full') {
+    if (config?.DISMISSIBLE === "full") {
       onClose();
     }
   };
 
   return (
-    <Dialog
-      TransitionComponent={isMobile ? TransitionUp : undefined}
-      className={`vi-dialog ${MODAL_SIZE_VS_CLASS_NAMES[selectedSize]} ${wrapperClassName}`}
-      open={open}
-      onClose={handleClose}
-      maxWidth={SIZE_TO_MAX_WIDTH[selectedSize]}
-      fullWidth={true}
-      {...rest}
-    >
-      <div className='p-24 h-fill'>
-        {title && (
-          <div className={`vi-dialog-title ${MODAL_SIZE_VS_CLASS_NAMES[selectedSize]}`}>
-            <div className='d-f ai-c jc-sb'>
-              <div className='d-f flex-dir-col gap-8'>
-                <Typography variant='semiBoldLabelL'>{title}</Typography>
-                {subTitle && <Typography variant='subtextM'>{subTitle}</Typography>}
+    <ThemeProvider theme={muiTheme}>
+      <Dialog
+        TransitionComponent={isMobile ? TransitionUp : undefined}
+        className={`vi-dialog ${MODAL_SIZE_VS_CLASS_NAMES[selectedSize]} ${wrapperClassName}`}
+        open={open}
+        onClose={handleClose}
+        maxWidth={SIZE_TO_MAX_WIDTH[selectedSize]}
+        fullWidth={true}
+        {...rest}
+      >
+        <div className="p-24 h-fill">
+          {title && (
+            <div
+              className={`vi-dialog-title ${MODAL_SIZE_VS_CLASS_NAMES[selectedSize]}`}
+            >
+              <div className="d-f ai-c jc-sb">
+                <div className="d-f flex-dir-col gap-8">
+                  <Typography variant="semiBoldLabelL">{title}</Typography>
+                  {subTitle && (
+                    <Typography variant="subtextM">{subTitle}</Typography>
+                  )}
+                </div>
+                {showCloseIcon && (
+                  <CloseIcon
+                    fontSize="small"
+                    className="close-icon"
+                    aria-label="Close dialog"
+                    onClick={onClose}
+                  />
+                )}
               </div>
-              {showCloseIcon && (
-                <CloseIcon
-                  fontSize='small'
-                  className='close-icon'
-                  aria-label='Close dialog'
-                  onClick={onClose}
-                />
+              {description && (
+                <Typography
+                  component="div"
+                  className="description"
+                  variant="subtextM"
+                >
+                  {description}
+                </Typography>
               )}
             </div>
-            {description && (
-              <Typography component='div' className='description' variant='subtextM'>
-                {description}
-              </Typography>
-            )}
-          </div>
-        )}
-        {children}
-        {showFooter && (
-          <>
-            {showFooterDivider && <Divider className='divider' />}
-            {showTertiaryCta ? (
-              <div className='vi-dialog-actions-wrapper'>
-                <LoadingButton
-                  className={`tertiary-cta ${
-                    tertiaryCtaType === TERTIARY_CTA_TYPES.DESTRUCTIVE ? 'destructive' : ''
-                  }`}
-                  variant='text'
-                  onClick={onTertiaryCtaClick}
-                  loading={isTertiaryCtaLoading}
-                  disabled={isTertiaryCtaDisabled}
-                  startIcon={tertiaryCtaStartIcon}
+          )}
+          {children}
+          {showFooter && (
+            <>
+              {showFooterDivider && <Divider className="divider" />}
+              {showTertiaryCta ? (
+                <div className="vi-dialog-actions-wrapper">
+                  <LoadingButton
+                    className={`tertiary-cta ${
+                      tertiaryCtaType === TERTIARY_CTA_TYPES.DESTRUCTIVE
+                        ? "destructive"
+                        : ""
+                    }`}
+                    variant="text"
+                    onClick={onTertiaryCtaClick}
+                    loading={isTertiaryCtaLoading}
+                    disabled={isTertiaryCtaDisabled}
+                    startIcon={tertiaryCtaStartIcon}
+                  >
+                    {tertiaryCtaTitle}
+                  </LoadingButton>
+                  <div
+                    className={`vi-dialog-actions ${MODAL_SIZE_VS_CLASS_NAMES[selectedSize]}`}
+                  >
+                    {secondaryCtaTitle && (
+                      <Button
+                        className="vi-dialog-cta"
+                        variant="outlined"
+                        onClick={onSecondaryCtaClick}
+                        disabled={isSecondaryCtaDisabled}
+                      >
+                        {secondaryCtaTitle}
+                      </Button>
+                    )}
+                    {primaryCtaTitle && (
+                      <LoadingButton
+                        className={`vi-dialog-cta ${subtype === "destructive" ? "destructive" : ""}`}
+                        variant="contained"
+                        onClick={onPrimaryCtaClick}
+                        loading={isPrimaryCtaLoading}
+                        disabled={isPrimaryCtaDisabled}
+                      >
+                        {primaryCtaTitle}
+                      </LoadingButton>
+                    )}
+                  </div>
+                </div>
+              ) : (
+                <div
+                  className={`vi-dialog-actions without-tertiary ${MODAL_SIZE_VS_CLASS_NAMES[selectedSize]}`}
                 >
-                  {tertiaryCtaTitle}
-                </LoadingButton>
-                <div className={`vi-dialog-actions ${MODAL_SIZE_VS_CLASS_NAMES[selectedSize]}`}>
                   {secondaryCtaTitle && (
                     <Button
-                      className='vi-dialog-cta'
-                      variant='outlined'
+                      className="vi-dialog-cta"
+                      variant="outlined"
                       onClick={onSecondaryCtaClick}
                       disabled={isSecondaryCtaDisabled}
                     >
@@ -159,8 +212,8 @@ const ViDialog = (props: ModalProps) => {
                   )}
                   {primaryCtaTitle && (
                     <LoadingButton
-                      className={`vi-dialog-cta ${subtype === 'destructive' ? 'destructive' : ''}`}
-                      variant='contained'
+                      className={`vi-dialog-cta ${subtype === "destructive" ? "destructive" : ""}`}
+                      variant="contained"
                       onClick={onPrimaryCtaClick}
                       loading={isPrimaryCtaLoading}
                       disabled={isPrimaryCtaDisabled}
@@ -169,38 +222,12 @@ const ViDialog = (props: ModalProps) => {
                     </LoadingButton>
                   )}
                 </div>
-              </div>
-            ) : (
-              <div
-                className={`vi-dialog-actions without-tertiary ${MODAL_SIZE_VS_CLASS_NAMES[selectedSize]}`}
-              >
-                {secondaryCtaTitle && (
-                  <Button
-                    className='vi-dialog-cta'
-                    variant='outlined'
-                    onClick={onSecondaryCtaClick}
-                    disabled={isSecondaryCtaDisabled}
-                  >
-                    {secondaryCtaTitle}
-                  </Button>
-                )}
-                {primaryCtaTitle && (
-                  <LoadingButton
-                    className={`vi-dialog-cta ${subtype === 'destructive' ? 'destructive' : ''}`}
-                    variant='contained'
-                    onClick={onPrimaryCtaClick}
-                    loading={isPrimaryCtaLoading}
-                    disabled={isPrimaryCtaDisabled}
-                  >
-                    {primaryCtaTitle}
-                  </LoadingButton>
-                )}
-              </div>
-            )}
-          </>
-        )}
-      </div>
-    </Dialog>
+              )}
+            </>
+          )}
+        </div>
+      </Dialog>
+    </ThemeProvider>
   );
 };
 
