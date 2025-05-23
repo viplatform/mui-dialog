@@ -1,48 +1,26 @@
-import globals from 'globals';
-import pluginJs from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import pluginReact from 'eslint-plugin-react';
+// import hooksConfig from "@viclafouch/eslint-config-viclafouch/hooks.mjs";
+// import importsConfig from "@viclafouch/eslint-config-viclafouch/imports.mjs";
+// import baseConfig from "@viclafouch/eslint-config-viclafouch/index.mjs";
+// import prettierConfig from "@viclafouch/eslint-config-viclafouch/prettier.mjs";
+// import reactConfig from "@viclafouch/eslint-config-viclafouch/react.mjs";
+// import typescriptConfig from "@viclafouch/eslint-config-viclafouch/typescript.mjs";
 
+/**
+ * @type {import("eslint").Linter.Config}
+ */
 export default [
+  // ...baseConfig,
+  // ...reactConfig,
+  // ...hooksConfig,
+  // ...importsConfig,
+  // ...typescriptConfig,
+  // ...prettierConfig,
   {
-    files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
-    settings: {
-      react: {
-        version: 'detect', // Automatically detect the React version
-      },
-    },
-  },
-  {
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        process: 'readonly', // Define process as a global variable
-      },
-    },
-  },
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
-  pluginReact.configs.flat.recommended,
-  {
-    rules: {
-      // React rules
-      'react/react-in-jsx-scope': 'off',
-      'react/prop-types': 'off', // Disable prop-types validation for TypeScript
-
-      // TypeScript rules
-      '@typescript-eslint/no-explicit-any': 'error',
-      '@typescript-eslint/no-unused-vars': 'warn',
-
-      // General rules
-      camelcase: [
-        'error',
-        {
-          properties: 'never',
-        },
-      ],
-      'spaced-comment': 'error',
-      quotes: ['error', 'single'],
-      'no-duplicate-imports': 'error',
-    },
+    ignores: [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/docs/build/**",
+      "docs/.docusaurus/**/**",
+    ],
   },
 ];
