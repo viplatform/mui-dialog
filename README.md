@@ -1,115 +1,177 @@
-# BaseTable
+# @viplatform/fe-vi-dialog
 
-`BaseTable` is a React component which is built to share the boilerplate code of Material React Table V3 across different projects.
+A reusable dialog component for React applications built with Material-UI (MUI).
 
----
+## Installation
+
+```bash
+# Using npm
+npm install @viplatform/fe-vi-dialog
+
+# Using yarn
+yarn add @viplatform/fe-vi-dialog
+```
 
 ## Features
 
-https://www.material-react-table.com/
+- Built with Material-UI (MUI) components
+- TypeScript support
+- Multiple dialog types:
+  - Information
+  - Confirmation
+  - Input
+- Customizable sizes and layouts
+- Support for primary, secondary, and tertiary actions
+- Responsive design
+- Theme customization
 
-## Repo
+## Usage
 
-https://github.com/KevinVandy/material-react-table
+```tsx
+import { ViDialog } from "@viplatform/fe-vi-dialog";
+import { MODAL_TYPES, INFORMATION_SUBTYPES } from "@viplatform/fe-vi-dialog";
 
-## Storybook
+// Basic Information Dialog
+const MyComponent = () => {
+  const [open, setOpen] = useState(false);
 
-https://www.material-react-table.dev/?path=/story/features-row-pinning-examples--row-pinning-sticky-default-enabled
+  return (
+    <ViDialog
+      type={MODAL_TYPES.INFORMATION}
+      subtype={INFORMATION_SUBTYPES.ACKNOWLEDGEMENT}
+      open={open}
+      onClose={() => setOpen(false)}
+      title="Dialog Title"
+      description="This is a dialog description"
+      actions={{
+        primaryCtaTitle: "Confirm",
+        onPrimaryCtaClick: () => {
+          // Handle primary action
+          setOpen(false);
+        },
+      }}
+    >
+      {/* Optional content */}
+    </ViDialog>
+  );
+};
 
----
+// Confirmation Dialog
+const ConfirmationExample = () => {
+  const [open, setOpen] = useState(false);
 
-## Setup
+  return (
+    <ViDialog
+      type={MODAL_TYPES.CONFIRMATION}
+      subtype="default"
+      open={open}
+      onClose={() => setOpen(false)}
+      title="Confirm Action"
+      description="Are you sure you want to proceed?"
+      actions={{
+        primaryCtaTitle: "Yes, proceed",
+        secondaryCtaTitle: "Cancel",
+        onPrimaryCtaClick: () => {
+          // Handle confirmation
+          setOpen(false);
+        },
+        onSecondaryCtaClick: () => {
+          setOpen(false);
+        },
+      }}
+    />
+  );
+};
+```
 
-To run this repository locally, follow these steps (ensure you're using Node version 20+):
+## Props
 
-1. **Clone this repo**
-   ```bash
-      git clone https://github.com/viplatform/fe-vi-dialog.git
-   ```
-2. **Install dependencies**
-   ```bash
-      npm run install
-   ```
+### Common Props
 
----
+| Prop          | Type                  | Required | Description                                       |
+| ------------- | --------------------- | -------- | ------------------------------------------------- |
+| type          | `MODAL_TYPES`         | Yes      | Type of dialog (INFORMATION, CONFIRMATION, INPUT) |
+| subtype       | `string`              | Yes      | Subtype of the dialog                             |
+| open          | `boolean`             | Yes      | Controls dialog visibility                        |
+| onClose       | `() => void`          | Yes      | Callback when dialog is closed                    |
+| title         | `string`              | No       | Dialog title                                      |
+| subTitle      | `string \| ReactNode` | No       | Dialog subtitle                                   |
+| description   | `string`              | No       | Dialog description                                |
+| children      | `ReactNode`           | No       | Additional content                                |
+| size          | `ModalSize`           | No       | Dialog size (SMALL, MEDIUM, LARGE, EXTRA_LARGE)   |
+| showCloseIcon | `boolean`             | No       | Show close icon (default: true)                   |
+| showDivider   | `boolean`             | No       | Show divider (default: true)                      |
+| showActions   | `boolean`             | No       | Show action buttons (default: true)               |
 
-## Changes
+### Actions Props
 
-Before committing any new changes, ensure everything is working correctly by running the following commands:
+| Prop                   | Type         | Required | Description                           |
+| ---------------------- | ------------ | -------- | ------------------------------------- |
+| primaryCtaTitle        | `string`     | No       | Primary button text                   |
+| secondaryCtaTitle      | `string`     | No       | Secondary button text                 |
+| tertiaryCtaTitle       | `string`     | No       | Tertiary button text                  |
+| isPrimaryCtaLoading    | `boolean`    | No       | Show loading state for primary button |
+| isPrimaryCtaDisabled   | `boolean`    | No       | Disable primary button                |
+| isSecondaryCtaDisabled | `boolean`    | No       | Disable secondary button              |
+| onPrimaryCtaClick      | `() => void` | No       | Primary button click handler          |
+| onSecondaryCtaClick    | `() => void` | No       | Secondary button click handler        |
+| onTertiaryCtaClick     | `() => void` | No       | Tertiary button click handler         |
 
-1. **Fix Linting Issues**
+Also supports all the props of Mui Dialog component
 
-   ```bash
-   npm run lint:fix
-   ```
+## Development
 
-2. **Build the Project**
+### Local Setup
 
-   ```bash
-   npm run build
-   ```
+```bash
+# Install dependencies
+yarn install
 
-Make sure all of the above commands run without errors before committing your changes.
+# Build package
+yarn build
 
----
+# Run tests
+yarn test
 
-## Commit Lint pre-commit hook rules reference link
+# Run tests with coverage
+yarn test:coverage
+```
 
-1. The commit message will be always in this format type(scope): subject (BLANK LINE) body (BLANK LINE) footer
-2. The type is mandatory and determines the intent of the change. Here are possible values:
-   - build: changes affecting build systems or external dependencies
-   - ci: updating configuration files for continuous integration and deployment services
-   - chore: updating grunt tasks etc.; no production code change
-   - docs: documentation-only changes
-   - feat: a new feature
-   - fix: a bug fix
-   - perf: a code change that improves performance
-   - refactor: a code change that neither fixes a bug nor adds a feature
-   - style: changes that do not affect the meaning of the code (white-space, formatting, missing semicolons, etc.)
-   - test: adding missing tests or correcting existing tests
-3. A scope is an optional value that provides additional contextual information about the change. For example, when the module’s name, npm package, or particular routine was affected. The scope, when present, must be contained within parenthesis.
-4. The subject is the headline of the commit. It should summarize in one sentence the nature of change.
-5. Example of few commit messages :
-   - docs(changelog): update changelog to beta.5
-   - fix(release): need to depend on latest rxjs and zone.js
-6. More refrences
-   - [What is commitlint](https://github.com/conventional-changelog/commitlint/#what-is-commitlint)
-   - [Best practices around commitlint](https://www.freecodecamp.org/news/how-to-use-commitlint-to-write-good-commit-messages/)
-   - [Official commitlint github page](https://github.com/conventional-changelog/commitlint)
+### Local Development with yarn link
 
----
+To test the package in another project locally:
 
-## Installation of the package in other repos
+1. In the `fe-vi-dialog` directory:
 
-To install the `BaseTable` package, follow these steps:
+```bash
+# Build the package
+yarn build
 
-1. **Generate a GitHub Access Token**
+# Create a global symlink
+yarn link
+```
 
-   You need a GitHub access token to access private GitHub packages. To generate one:
+2. In your project directory:
 
-   - Go to [GitHub Settings](https://github.com/settings/tokens).
-   - Click **Generate new token**.
-   - Give your token a descriptive name and select the scopes`read:packages` & `repo` for accessing packages.
-   - Click **Generate token** and copy the token.
+```bash
+# Link to the package
+yarn link "@viplatform/fe-vi-dialog"
+```
 
-2. **Create a `.npmrc` File**
+3. To unlink when done:
 
-   Create a `.npmrc` file in your project root with the following configuration:
+```bash
+# In your project directory
+yarn unlink "@viplatform/fe-vi-dialog"
 
-   ```
-   @viplatform:registry=https://npm.pkg.github.com
-   //npm.pkg.github.com/:_authToken=YOUR_GITHUB_ACCESS_TOKEN
+# In the fe-vi-dialog directory
+yarn unlink
+```
 
-   ```
+Note: After making changes to the package, you'll need to:
 
-3. **Install package**
+1. Rebuild the package (`yarn build`)
 
-   ```bash
-   npm install @viplatform/fe-vi-dialog
-   ```
+## License
 
-   or with yarn:
-
-   ```bash
-   yarn add @viplatform/fe-vi-dialog
-   ```
+© [Virtual Internships](https://github.com/viplatform)
