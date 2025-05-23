@@ -15,7 +15,6 @@ jobs:
       labels: [self-hosted, dev-image-builder]
     env:
       CONFIG_TYPE: "UAT"
-      REACT_APP_ASSET_BASE_URL: "https://assets.virtualinternships.com/vi-dialog"
 
     steps:
       - name: Checkout code
@@ -30,16 +29,6 @@ jobs:
           aws-access-key-id: ${{ secrets.PROD_S3_AWS_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.PROD_S3_AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-2
-
-      - name: Upload files to S3 with AWS CLI
-        run: |
-          aws sts get-caller-identity
-          aws s3 sync ./assets/ s3://assets.virtualinternships.com/vi-dialog --delete
-
-      - name: Make envfile
-        uses: SpicyPizza/create-envfile@v2.0
-        with:
-          envkey_REACT_APP_ASSET_BASE_URL: "https://assets.virtualinternships.com/vi-dialog"
 
       - name: Setup Nodejs and npm
         uses: actions/setup-node@v4
