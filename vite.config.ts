@@ -2,6 +2,7 @@ import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import dts from "vite-plugin-dts";
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
+import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const path = require("node:path");
@@ -21,7 +22,13 @@ export default defineConfig({
   },
   build: {
     target: "esnext",
-    minify: true,
+    minify: "terser",
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
     lib: {
       formats: ["es"],
       entry: path.resolve(__dirname, "src/index.ts"),
@@ -38,6 +45,15 @@ export default defineConfig({
           "react/jsx-runtime": "jsxRuntime",
         },
       },
+      external: [
+        "react",
+        "react-dom",
+        "@mui/material",
+        "@mui/icons-material",
+        "@mui/lab",
+        "@emotion/react",
+        "@emotion/styled",
+      ],
     },
   },
   plugins: [
@@ -47,5 +63,6 @@ export default defineConfig({
       rollupTypes: true,
       exclude: ["/**/*.stories.tsx", "/**/*.test.tsx"],
     }),
+    cssInjectedByJsPlugin(),
   ],
 });
