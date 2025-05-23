@@ -20,6 +20,10 @@
       "default": "./dist/fe-vi-dialog.es.js"
     }
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/viclafouch/mui-otp-input.git"
