@@ -1,5 +1,5 @@
 {
-  "name": "fe-vi-dialog",
+  "name": "@viplatform/fe-vi-dialog",
   "description": "A One-Time Password input designed for the React library MUI",
   "author": "Victor de la Fouchardiere <victor.delafouchardiere@gmail.com> (https://github.com/viclafouch)",
   "license": "MIT",
@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/viclafouch/mui-otp-input.git"
+    "url": "git+https://github.com/viplatform/fe-vi-dialog.git"
   },
   "keywords": [
     "react",
