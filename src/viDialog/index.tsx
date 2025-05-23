@@ -10,8 +10,9 @@ import { ThemeProvider, useTheme } from "@mui/material/styles";
 import { Divider } from "@mui/material";
 import _noop from "lodash/noop";
 
+import { dialogTypography, muiTheme } from "../muiTheme";
+
 import { checkIfTertiaryCtaIsAllowed } from "./helpers/viDialog.general";
-import { muiTheme } from "../muiTheme";
 
 import {
   MODAL_TYPES,
@@ -42,8 +43,16 @@ const TransitionUp = forwardRef<HTMLDivElement, SlideProps>(
 );
 
 const ViDialog = (props: ModalProps) => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  let parentTheme = useTheme();
+  parentTheme = {
+    ...parentTheme,
+    typography: {
+      ...parentTheme.typography,
+      ...dialogTypography,
+    },
+  };
+
+  const isMobile = useMediaQuery("(min-width:600px)");
   const subtype =
     props.type === MODAL_TYPES.INFORMATION
       ? (props as InformationModalProps).subtype
@@ -107,8 +116,10 @@ const ViDialog = (props: ModalProps) => {
     }
   };
 
+  const currentTheme = parentTheme || muiTheme;
+  console.log({ parentTheme });
   return (
-    <ThemeProvider theme={muiTheme}>
+    <ThemeProvider theme={currentTheme}>
       <Dialog
         TransitionComponent={isMobile ? TransitionUp : undefined}
         className={`vi-dialog ${MODAL_SIZE_VS_CLASS_NAMES[selectedSize]} ${wrapperClassName}`}
@@ -143,7 +154,7 @@ const ViDialog = (props: ModalProps) => {
                 <Typography
                   component="div"
                   className="description"
-                  variant="subtextM"
+                  // variant="subtextM"
                 >
                   {description}
                 </Typography>
