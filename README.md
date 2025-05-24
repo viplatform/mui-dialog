@@ -189,41 +189,6 @@ yarn test
 yarn test:coverage
 ```
 
-### Local Development with yarn link
-
-To test the package in another project locally:
-
-1. In the `fe-vi-dialog` directory:
-
-```bash
-# Build the package
-yarn build
-
-# Create a global symlink
-yarn link
-```
-
-2. In your project directory:
-
-```bash
-# Link to the package
-yarn link "vi-material-dialog"
-```
-
-3. To unlink when done:
-
-```bash
-# In your project directory
-yarn unlink "vi-material-dialog"
-
-# In the fe-vi-dialog directory
-yarn unlink
-```
-
-Note: After making changes to the package, you'll need to:
-
-1. Rebuild the package (`yarn build`)
-
 ## License
 
 © [Virtual Internships]
