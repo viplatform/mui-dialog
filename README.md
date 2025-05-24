@@ -55,33 +55,6 @@ const MyComponent = () => {
     </ViDialog>
   );
 };
-
-// Confirmation Dialog
-const ConfirmationExample = () => {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <ViDialog
-      type={MODAL_TYPES.CONFIRMATION}
-      subtype="default"
-      open={open}
-      onClose={() => setOpen(false)}
-      title="Confirm Action"
-      description="Are you sure you want to proceed?"
-      actions={{
-        primaryCtaTitle: "Yes, proceed",
-        secondaryCtaTitle: "Cancel",
-        onPrimaryCtaClick: () => {
-          // Handle confirmation
-          setOpen(false);
-        },
-        onSecondaryCtaClick: () => {
-          setOpen(false);
-        },
-      }}
-    />
-  );
-};
 ```
 
 ## Props
@@ -167,35 +140,7 @@ const ConfirmationExample = () => {
 ## Usage Example
 
 ```tsx
-import { ViDialog } from 'vi-material-dialog';
-
-// Information Modal
-<ViDialog
-  type="information"
-  subtype="acknowledgement"
-  open={true}
-  onClose={() => {}}
-  title="Information"
-  description="This is an information modal"
-  size="small"
-/>
-
-// Confirmation Modal
-<ViDialog
-  type="confirmation"
-  subtype="destructive"
-  open={true}
-  onClose={() => {}}
-  title="Confirm Action"
-  description="Are you sure you want to proceed?"
-  size="small"
-  actions={{
-    primaryCtaTitle: "Confirm",
-    secondaryCtaTitle: "Cancel",
-    onPrimaryCtaClick: () => {},
-    onSecondaryCtaClick: () => {}
-  }}
-/>
+import { ViDialog } from "vi-material-dialog";
 
 // Input Modal
 <ViDialog
@@ -210,11 +155,11 @@ import { ViDialog } from 'vi-material-dialog';
     primaryCtaTitle: "Submit",
     secondaryCtaTitle: "Cancel",
     onPrimaryCtaClick: () => {},
-    onSecondaryCtaClick: () => {}
+    onSecondaryCtaClick: () => {},
   }}
 >
   <input type="text" />
-</ViDialog>
+</ViDialog>;
 ```
 
 ## Modal Configuration

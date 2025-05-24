@@ -7,7 +7,7 @@
     "url": "https://github.com/viplatform/fe-vi-dialog/issues"
   },
   "homepage": "https://github.com/viplatform/fe-vi-dialog#readme",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "files": [
     "dist"
   ],
@@ -27,13 +27,9 @@
   "keywords": [
     "react",
     "typescript",
-    "input",
     "mui",
     "javascript",
-    "material",
-    "otp",
-    "form",
-    "password"
+    "material"
   ],
   "scripts": {
     "build": "npm run lint && vite build",
