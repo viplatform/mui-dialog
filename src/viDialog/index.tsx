@@ -117,7 +117,7 @@ const ViDialog = (props: ModalProps) => {
   };
 
   const currentTheme = parentTheme || muiTheme;
-  console.log({ parentTheme });
+
   return (
     <ThemeProvider theme={currentTheme}>
       <Dialog

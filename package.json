@@ -1,12 +1,12 @@
 {
-  "name": "@viplatform/fe-vi-dialog",
+  "name": "vi-material-dialog",
   "description": "A One-Time Password input designed for the React library MUI",
   "author": "Victor de la Fouchardiere <victor.delafouchardiere@gmail.com> (https://github.com/viclafouch)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/viclafouch/mui-otp-input/issues"
+    "url": "https://github.com/viplatform/fe-vi-dialog/issues"
   },
-  "homepage": "https://viclafouch.github.io/mui-otp-input",
+  "homepage": "https://github.com/viplatform/fe-vi-dialog#readme",
   "version": "1.0.2",
   "files": [
     "dist"
@@ -19,10 +19,6 @@
       "import": "./dist/fe-vi-dialog.es.js",
       "default": "./dist/fe-vi-dialog.es.js"
     }
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com",
-    "access": "restricted"
   },
   "repository": {
     "type": "git",
@@ -48,7 +44,8 @@
     "test": "vitest",
     "release": "standard-version",
     "coverage": "vitest run --coverage",
-    "prepare": "husky"
+    "prepare": "husky",
+    "prepublishOnly": "npm run build"
   },
   "standard-version": {
     "scripts": {

@@ -1,4 +1,4 @@
-# @viplatform/fe-vi-dialog
+# vi-material-dialog
 
 A reusable dialog component for React applications built with Material-UI (MUI).
 
@@ -6,10 +6,10 @@ A reusable dialog component for React applications built with Material-UI (MUI).
 
 ```bash
 # Using npm
-npm install @viplatform/fe-vi-dialog
+npm install vi-material-dialog
 
 # Using yarn
-yarn add @viplatform/fe-vi-dialog
+yarn add vi-material-dialog
 ```
 
 ## Features
@@ -28,8 +28,8 @@ yarn add @viplatform/fe-vi-dialog
 ## Usage
 
 ```tsx
-import { ViDialog } from "@viplatform/fe-vi-dialog";
-import { MODAL_TYPES, INFORMATION_SUBTYPES } from "@viplatform/fe-vi-dialog";
+import { ViDialog } from "vi-material-dialog";
+import { MODAL_TYPES, INFORMATION_SUBTYPES } from "vi-material-dialog";
 
 // Basic Information Dialog
 const MyComponent = () => {
@@ -86,38 +86,145 @@ const ConfirmationExample = () => {
 
 ## Props
 
-### Common Props
+## Modal Types
 
-| Prop          | Type                  | Required | Description                                       |
-| ------------- | --------------------- | -------- | ------------------------------------------------- |
-| type          | `MODAL_TYPES`         | Yes      | Type of dialog (INFORMATION, CONFIRMATION, INPUT) |
-| subtype       | `string`              | Yes      | Subtype of the dialog                             |
-| open          | `boolean`             | Yes      | Controls dialog visibility                        |
-| onClose       | `() => void`          | Yes      | Callback when dialog is closed                    |
-| title         | `string`              | No       | Dialog title                                      |
-| subTitle      | `string \| ReactNode` | No       | Dialog subtitle                                   |
-| description   | `string`              | No       | Dialog description                                |
-| children      | `ReactNode`           | No       | Additional content                                |
-| size          | `ModalSize`           | No       | Dialog size (SMALL, MEDIUM, LARGE, EXTRA_LARGE)   |
-| showCloseIcon | `boolean`             | No       | Show close icon (default: true)                   |
-| showDivider   | `boolean`             | No       | Show divider (default: true)                      |
-| showActions   | `boolean`             | No       | Show action buttons (default: true)               |
+| Type           | Description                          | Subtypes                                 | Allowed Sizes     |
+| -------------- | ------------------------------------ | ---------------------------------------- | ----------------- |
+| `information`  | For displaying information to users  | `acknowledgement`, `progress`, `passive` | Varies by subtype |
+| `confirmation` | For user confirmations and decisions | `default`, `destructive`, `nested`       | `small` only      |
+| `input`        | For collecting user input            | `default`, `destructive`                 | All sizes         |
 
-### Actions Props
+### Subtype Details
 
-| Prop                   | Type         | Required | Description                           |
-| ---------------------- | ------------ | -------- | ------------------------------------- |
-| primaryCtaTitle        | `string`     | No       | Primary button text                   |
-| secondaryCtaTitle      | `string`     | No       | Secondary button text                 |
-| tertiaryCtaTitle       | `string`     | No       | Tertiary button text                  |
-| isPrimaryCtaLoading    | `boolean`    | No       | Show loading state for primary button |
-| isPrimaryCtaDisabled   | `boolean`    | No       | Disable primary button                |
-| isSecondaryCtaDisabled | `boolean`    | No       | Disable secondary button              |
-| onPrimaryCtaClick      | `() => void` | No       | Primary button click handler          |
-| onSecondaryCtaClick    | `() => void` | No       | Secondary button click handler        |
-| onTertiaryCtaClick     | `() => void` | No       | Tertiary button click handler         |
+#### Information Modal Subtypes
 
-Also supports all the props of Mui Dialog component
+| Subtype           | Description                            | Allowed Sizes                   | Dismissible |
+| ----------------- | -------------------------------------- | ------------------------------- | ----------- |
+| `acknowledgement` | For simple acknowledgements            | `small`                         | `full`      |
+| `progress`        | For showing progress or status updates | `small`, `medium`, `large`      | `partial`   |
+| `passive`         | For passive information display        | `medium`, `large`, `extraLarge` | `full`      |
+
+#### Confirmation Modal Subtypes
+
+| Subtype       | Description              | Allowed Sizes | Dismissible |
+| ------------- | ------------------------ | ------------- | ----------- |
+| `default`     | Standard confirmation    | `small`       | `partial`   |
+| `destructive` | For destructive actions  | `small`       | `partial`   |
+| `nested`      | For nested confirmations | `small`       | `partial`   |
+
+#### Input Modal Subtypes
+
+| Subtype       | Description                   | Allowed Sizes | Dismissible |
+| ------------- | ----------------------------- | ------------- | ----------- |
+| `default`     | Standard input                | All sizes     | `partial`   |
+| `destructive` | For destructive input actions | All sizes     | `partial`   |
+
+## Props Reference
+
+### Base Props
+
+| Prop               | Type                                             | Required | Default   | Description                    |
+| ------------------ | ------------------------------------------------ | -------- | --------- | ------------------------------ |
+| `type`             | `"information" \| "confirmation" \| "input"`     | Yes      | -         | Type of the modal              |
+| `subtype`          | `string`                                         | Yes      | -         | Subtype of the modal           |
+| `open`             | `boolean`                                        | Yes      | -         | Controls modal visibility      |
+| `onClose`          | `() => void`                                     | Yes      | -         | Callback when modal is closed  |
+| `title`            | `string`                                         | No       | -         | Modal title                    |
+| `subTitle`         | `string \| React.ReactNode`                      | No       | -         | Modal subtitle                 |
+| `description`      | `string`                                         | No       | -         | Modal description              |
+| `children`         | `React.ReactNode`                                | No       | -         | Additional content             |
+| `size`             | `"small" \| "medium" \| "large" \| "extraLarge"` | No       | `"small"` | Modal size                     |
+| `wrapperClassName` | `string`                                         | No       | -         | Custom class for modal wrapper |
+| `showCloseIcon`    | `boolean`                                        | No       | `true`    | Show/hide close icon           |
+| `showDivider`      | `boolean`                                        | No       | `true`    | Show/hide divider              |
+| `showActions`      | `boolean`                                        | No       | `true`    | Show/hide action buttons       |
+
+### Action Props
+
+| Prop                     | Type              | Required | Default | Description                           |
+| ------------------------ | ----------------- | -------- | ------- | ------------------------------------- |
+| `primaryCtaTitle`        | `string`          | No       | -       | Primary button text                   |
+| `secondaryCtaTitle`      | `string`          | No       | -       | Secondary button text                 |
+| `tertiaryCtaTitle`       | `string`          | No       | -       | Tertiary button text                  |
+| `isPrimaryCtaLoading`    | `boolean`         | No       | `false` | Show loading state for primary button |
+| `isPrimaryCtaDisabled`   | `boolean`         | No       | `false` | Disable primary button                |
+| `isSecondaryCtaDisabled` | `boolean`         | No       | `false` | Disable secondary button              |
+| `isTertiaryCtaDisabled`  | `boolean`         | No       | `false` | Disable tertiary button               |
+| `onPrimaryCtaClick`      | `() => void`      | No       | -       | Primary button click handler          |
+| `onSecondaryCtaClick`    | `() => void`      | No       | -       | Secondary button click handler        |
+| `onTertiaryCtaClick`     | `() => void`      | No       | -       | Tertiary button click handler         |
+| `tertiaryCtaStartIcon`   | `React.ReactNode` | No       | -       | Icon for tertiary button              |
+
+## Size Breakpoints
+
+| Size         | Breakpoint | Max Width |
+| ------------ | ---------- | --------- |
+| `small`      | `xs`       | 600px     |
+| `medium`     | `sm`       | 900px     |
+| `large`      | `md`       | 1200px    |
+| `extraLarge` | `lg`       | 1536px    |
+
+## Usage Example
+
+```tsx
+import { ViDialog } from 'vi-material-dialog';
+
+// Information Modal
+<ViDialog
+  type="information"
+  subtype="acknowledgement"
+  open={true}
+  onClose={() => {}}
+  title="Information"
+  description="This is an information modal"
+  size="small"
+/>
+
+// Confirmation Modal
+<ViDialog
+  type="confirmation"
+  subtype="destructive"
+  open={true}
+  onClose={() => {}}
+  title="Confirm Action"
+  description="Are you sure you want to proceed?"
+  size="small"
+  actions={{
+    primaryCtaTitle: "Confirm",
+    secondaryCtaTitle: "Cancel",
+    onPrimaryCtaClick: () => {},
+    onSecondaryCtaClick: () => {}
+  }}
+/>
+
+// Input Modal
+<ViDialog
+  type="input"
+  subtype="default"
+  open={true}
+  onClose={() => {}}
+  title="Input Required"
+  description="Please provide your input"
+  size="medium"
+  actions={{
+    primaryCtaTitle: "Submit",
+    secondaryCtaTitle: "Cancel",
+    onPrimaryCtaClick: () => {},
+    onSecondaryCtaClick: () => {}
+  }}
+>
+  <input type="text" />
+</ViDialog>
+```
+
+## Modal Configuration
+
+Each modal type and subtype has specific configurations for:
+
+- Dismissibility: 'full' or 'partial'
+- Allowed sizes: Array of allowed size options
+
+These configurations are automatically enforced by the component to ensure consistent behavior across different use cases.
 
 ## Development
 
@@ -155,14 +262,14 @@ yarn link
 
 ```bash
 # Link to the package
-yarn link "@viplatform/fe-vi-dialog"
+yarn link "vi-material-dialog"
 ```
 
 3. To unlink when done:
 
 ```bash
 # In your project directory
-yarn unlink "@viplatform/fe-vi-dialog"
+yarn unlink "vi-material-dialog"
 
 # In the fe-vi-dialog directory
 yarn unlink
@@ -174,4 +281,4 @@ Note: After making changes to the package, you'll need to:
 
 ## License
 
-© [Virtual Internships](https://github.com/viplatform)
+© [Virtual Internships]
