@@ -1,5 +1,5 @@
 {
-  "name": "vi-material-dialog",
+  "name": "@viplatform/fe-vi-dialog",
   "description": "A One-Time Password input designed for the React library MUI",
   "author": "Victor de la Fouchardiere <victor.delafouchardiere@gmail.com> (https://github.com/viclafouch)",
   "license": "MIT",
@@ -106,5 +106,8 @@
     "vite-plugin-css-injected-by-js": "^3.5.2",
     "vite-plugin-dts": "^4.5.3",
     "vitest": "^3.1.1"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }
