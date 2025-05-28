@@ -1,7 +1,7 @@
 {
   "name": "mui-dialog",
   "description": "A reusable dialog component for React applications built with Material-UI (MUI).",
-  "author": "Victor de la Fouchardiere <victor.delafouchardiere@gmail.com> (https://github.com/viclafouch)",
+  "author": "Bikash Das <bikashdas0108@gmail.com> (https://github.com/bikashdas0108)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/viplatform/mui-dialog/issues"
