@@ -26,9 +26,9 @@ export interface BaseModalProps {
   onClose: () => void;
   open: boolean;
   showCloseIcon?: boolean;
-  title?: string;
+  title?: string | React.ReactNode;
   subTitle?: string | React.ReactNode;
-  description?: string;
+  description?: string | React.ReactNode;
   children: React.ReactNode;
   actions?: IActions;
   showDivider?: boolean;
