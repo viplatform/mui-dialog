@@ -1,28 +1,28 @@
 {
-  "name": "vi-material-dialog",
+  "name": "mui-dialog",
   "description": "A reusable dialog component for React applications built with Material-UI (MUI).",
   "author": "Victor de la Fouchardiere <victor.delafouchardiere@gmail.com> (https://github.com/viclafouch)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/viplatform/fe-vi-dialog/issues"
+    "url": "https://github.com/viplatform/mui-dialog/issues"
   },
-  "homepage": "https://github.com/viplatform/fe-vi-dialog#readme",
-  "version": "1.0.6",
+  "homepage": "https://github.com/viplatform/mui-dialog#readme",
+  "version": "1.0.7",
   "files": [
     "dist"
   ],
-  "main": "./dist/fe-vi-dialog.es.js",
+  "main": "./dist/mui-dialog.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/fe-vi-dialog.es.js",
-      "default": "./dist/fe-vi-dialog.es.js"
+      "import": "./dist/mui-dialog.es.js",
+      "default": "./dist/mui-dialog.es.js"
     }
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/viplatform/fe-vi-dialog.git"
+    "url": "git+https://github.com/viplatform/mui-dialog.git"
   },
   "keywords": [
     "react",
