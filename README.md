@@ -1,4 +1,4 @@
-# vi-material-dialog
+# mui-dialog
 
 A reusable dialog component for React applications built with Material-UI (MUI).
 
@@ -6,10 +6,10 @@ A reusable dialog component for React applications built with Material-UI (MUI).
 
 ```bash
 # Using npm
-npm install vi-material-dialog
+npm install mui-dialog
 
 # Using yarn
-yarn add vi-material-dialog
+yarn add mui-dialog
 ```
 
 ## Features
@@ -28,8 +28,8 @@ yarn add vi-material-dialog
 ## Usage
 
 ```tsx
-import { ViDialog } from "vi-material-dialog";
-import { MODAL_TYPES, INFORMATION_SUBTYPES } from "vi-material-dialog";
+import { ViDialog } from "mui-dialog";
+import { MODAL_TYPES, INFORMATION_SUBTYPES } from "mui-dialog";
 
 // Basic Information Dialog
 const MyComponent = () => {
@@ -102,9 +102,9 @@ const MyComponent = () => {
 | `subtype`          | `string`                                         | Yes      | -         | Subtype of the modal           |
 | `open`             | `boolean`                                        | Yes      | -         | Controls modal visibility      |
 | `onClose`          | `() => void`                                     | Yes      | -         | Callback when modal is closed  |
-| `title`            | `string`                                         | No       | -         | Modal title                    |
+| `title`            | `string \| React.ReactNode`                      | No       | -         | Modal title                    |
 | `subTitle`         | `string \| React.ReactNode`                      | No       | -         | Modal subtitle                 |
-| `description`      | `string`                                         | No       | -         | Modal description              |
+| `description`      | `string \| React.ReactNode`                      | No       | -         | Modal description              |
 | `children`         | `React.ReactNode`                                | No       | -         | Additional content             |
 | `size`             | `"small" \| "medium" \| "large" \| "extraLarge"` | No       | `"small"` | Modal size                     |
 | `wrapperClassName` | `string`                                         | No       | -         | Custom class for modal wrapper |
@@ -140,7 +140,7 @@ const MyComponent = () => {
 ## Usage Example
 
 ```tsx
-import { ViDialog } from "vi-material-dialog";
+import { ViDialog } from "mui-dialog";
 
 // Input Modal
 <ViDialog
@@ -188,41 +188,6 @@ yarn test
 # Run tests with coverage
 yarn test:coverage
 ```
-
-### Local Development with yarn link
-
-To test the package in another project locally:
-
-1. In the `fe-vi-dialog` directory:
-
-```bash
-# Build the package
-yarn build
-
-# Create a global symlink
-yarn link
-```
-
-2. In your project directory:
-
-```bash
-# Link to the package
-yarn link "vi-material-dialog"
-```
-
-3. To unlink when done:
-
-```bash
-# In your project directory
-yarn unlink "vi-material-dialog"
-
-# In the fe-vi-dialog directory
-yarn unlink
-```
-
-Note: After making changes to the package, you'll need to:
-
-1. Rebuild the package (`yarn build`)
 
 ## License
 
