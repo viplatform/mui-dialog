@@ -1,3 +1,3 @@
-export { default as ViDialog } from './viDialog';
-export * from './viDialog/constants/viDialog.types';
-export * from './viDialog/constants/viDialog.interfaces';
+export { default as MuiDialog } from "./muiDialog";
+export * from "./muiDialog/constants/muiDialog.types";
+export * from "./muiDialog/constants/muiDialog.interfaces";

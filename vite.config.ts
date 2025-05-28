@@ -32,9 +32,9 @@ export default defineConfig({
     lib: {
       formats: ["es"],
       entry: path.resolve(__dirname, "src/index.ts"),
-      name: "fe-vi-dialog",
+      name: "mui-dialog",
       fileName: (format) => {
-        return `fe-vi-dialog.${format}.js`;
+        return `mui-dialog.${format}.js`;
       },
     },
     rollupOptions: {

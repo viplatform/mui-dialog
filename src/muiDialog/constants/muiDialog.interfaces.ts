@@ -5,7 +5,7 @@ import {
   MODAL_TYPES,
   ModalSize,
   TERTIARY_CTA_TYPES,
-} from './viDialog.types';
+} from "./muiDialog.types";
 
 interface IActions {
   primaryCtaTitle?: string;

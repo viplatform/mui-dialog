@@ -28,7 +28,7 @@ yarn add mui-dialog
 ## Usage
 
 ```tsx
-import { ViDialog } from "mui-dialog";
+import { MuiDialog } from "mui-dialog";
 import { MODAL_TYPES, INFORMATION_SUBTYPES } from "mui-dialog";
 
 // Basic Information Dialog
@@ -36,7 +36,7 @@ const MyComponent = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <ViDialog
+    <MuiDialog
       type={MODAL_TYPES.INFORMATION}
       subtype={INFORMATION_SUBTYPES.ACKNOWLEDGEMENT}
       open={open}
@@ -52,7 +52,7 @@ const MyComponent = () => {
       }}
     >
       {/* Optional content */}
-    </ViDialog>
+    </MuiDialog>
   );
 };
 ```
@@ -140,10 +140,10 @@ const MyComponent = () => {
 ## Usage Example
 
 ```tsx
-import { ViDialog } from "mui-dialog";
+import { MuiDialog } from "mui-dialog";
 
 // Input Modal
-<ViDialog
+<MuiDialog
   type="input"
   subtype="default"
   open={true}
@@ -159,7 +159,7 @@ import { ViDialog } from "mui-dialog";
   }}
 >
   <input type="text" />
-</ViDialog>;
+</MuiDialog>;
 ```
 
 ## Modal Configuration
