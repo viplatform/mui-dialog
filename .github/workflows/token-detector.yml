@@ -24,7 +24,8 @@ jobs:
       - uses: gitleaks/gitleaks-action@v2
         id: gitleaks
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE}}
     
       # - name: Notify Token Detected
       #   if: failure() # if:  ${{ steps.gitleaks.outputs.exitcode == 1 || steps.gitleaks.outputs.exit-code != 0 }}

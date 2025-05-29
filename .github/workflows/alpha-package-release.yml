@@ -56,7 +56,7 @@ jobs:
       - name: Publish alpha version to GitHub Packages
         run: npm publish --tag alpha
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN_PACKAGES }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: release-drafter/release-drafter@v6
         id: release-drafter
