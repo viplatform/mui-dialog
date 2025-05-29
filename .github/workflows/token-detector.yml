@@ -4,7 +4,7 @@ on:
     branches:
       - main
       - develop
-      
+
   push:
     branches:
       - main
@@ -15,8 +15,10 @@ jobs:
       contents: write
       pull-requests: write
       checks: write
+      security-events: write
     name: gitleaks
-    runs-on: ubuntu-latest
+    runs-on:
+      labels: [self-hosted, dev-image-builder]
     steps:
       - uses: actions/checkout@v3
         with:
@@ -26,7 +28,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE}}
-    
+          GITLEAKS_ENABLE_UPLOAD_ARTIFACT: false
+
       # - name: Notify Token Detected
       #   if: failure() # if:  ${{ steps.gitleaks.outputs.exitcode == 1 || steps.gitleaks.outputs.exit-code != 0 }}
       #   uses: voxmedia/github-action-slack-notify-build@v1
