@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CONFIG_TYPE: "UAT"
+      NPM_CONFIG_REGISTRY: "https://registry.npmjs.org/"
 
     steps:
       - name: Checkout code
@@ -41,8 +42,12 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
 
+      - name: Configure npm
+        run: |
+          npm config set registry https://registry.npmjs.org/
+          npm config set //registry.npmjs.org/:_authToken ${NODE_AUTH_TOKEN}
+
       - name: Publish to NPM
-        run: npm publish --access public
+        run: npm publish --access public --registry https://registry.npmjs.org/
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_CONFIG_REGISTRY: "https://registry.npmjs.org/"
