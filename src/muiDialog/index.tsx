@@ -12,7 +12,7 @@ import _noop from "lodash/noop";
 
 import { dialogTypography, muiTheme } from "../muiTheme";
 
-import { checkIfTertiaryCtaIsAllowed } from "./helpers/viDialog.general";
+import { checkIfTertiaryCtaIsAllowed } from "./helpers/muiDialog.general";
 
 import {
   MODAL_TYPES,
@@ -21,14 +21,14 @@ import {
   MODAL_SIZE_VS_CLASS_NAMES,
   MODAL_SIZES,
   TERTIARY_CTA_TYPES,
-} from "./constants/viDialog.types";
+} from "./constants/muiDialog.types";
 import {
   ConfirmationModalProps,
   InformationModalProps,
   InputModalProps,
-} from "./constants/viDialog.interfaces";
+} from "./constants/muiDialog.interfaces";
 
-import "./viDialog.scss";
+import "./muiDialog.scss";
 
 type ModalProps =
   | InformationModalProps
@@ -42,7 +42,7 @@ const TransitionUp = forwardRef<HTMLDivElement, SlideProps>(
   }
 );
 
-const ViDialog = (props: ModalProps) => {
+const MuiDialog = (props: ModalProps) => {
   let parentTheme = useTheme();
   parentTheme = {
     ...parentTheme,
@@ -242,4 +242,4 @@ const ViDialog = (props: ModalProps) => {
   );
 };
 
-export default ViDialog;
+export default MuiDialog;
