@@ -12,27 +12,13 @@ jobs:
       packages: write
       pull-requests: write
 
-    runs-on:
-      labels: [self-hosted, dev-image-builder]
+    runs-on: ubuntu-latest
     env:
       CONFIG_TYPE: "UAT"
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Install-aws-cli
-        uses: unfor19/install-aws-cli-action@v1
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
-        env:
-          AWS_ROLE_ARN: arn:aws:iam::594008745999:role/non-prod-github-arc-role
-        with:
-          role-to-assume: arn:aws:iam::594008745999:role/non-prod-github-arc-role
-          aws-region: eu-west-2
-          role-duration-seconds: 1200
-          role-skip-session-tagging: true
 
       - name: Setup Nodejs and npm
         uses: actions/setup-node@v4

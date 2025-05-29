@@ -11,24 +11,13 @@ jobs:
       packages: write
       pull-requests: write
 
-    runs-on:
-      labels: [self-hosted, dev-image-builder]
+    runs-on: ubuntu-latest
     env:
       CONFIG_TYPE: "UAT"
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Install-aws-cli
-        uses: unfor19/install-aws-cli-action@v1
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          aws-access-key-id: ${{ secrets.PROD_S3_AWS_ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.PROD_S3_AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-2
 
       - name: Setup Nodejs and npm
         uses: actions/setup-node@v4
