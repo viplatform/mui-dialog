@@ -181,13 +181,42 @@ yarn install
 
 # Build package
 yarn build
-
-# Run tests
-yarn test
-
-# Run tests with coverage
-yarn test:coverage
 ```
+
+### Local Development with yarn link
+
+To test the package in another project locally:
+
+1. In the `mui-dialog` directory:
+
+```bash
+# Build the package
+yarn build
+
+# Create a global symlink
+yarn link
+```
+
+2. In your project directory:
+
+```bash
+# Link to the package
+yarn link "mui-dialog"
+```
+
+3. To unlink when done:
+
+```bash
+# In your project directory
+yarn unlink "mui-dialog"
+
+# In the fe-vi-dialog directory
+yarn unlink
+```
+
+Note: After making changes to the package, you'll need to:
+
+1. Rebuild the package (`yarn build`)
 
 ## License
 
