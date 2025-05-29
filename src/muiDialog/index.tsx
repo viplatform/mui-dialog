@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import Dialog from "@mui/material/Dialog";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import LoadingButton from "@mui/lab/LoadingButton";
@@ -82,14 +81,15 @@ const MuiDialog = (props: ModalProps) => {
   const {
     primaryCtaTitle,
     secondaryCtaTitle,
-    isPrimaryCtaLoading = false,
+    isPrimaryCtaLoading,
+    isSecondaryCtaLoading,
     isPrimaryCtaDisabled = false,
     isSecondaryCtaDisabled = false,
     onPrimaryCtaClick = _noop,
     onSecondaryCtaClick = _noop,
     tertiaryCtaTitle,
     tertiaryCtaStartIcon,
-    isTertiaryCtaLoading = false,
+    isTertiaryCtaLoading,
     isTertiaryCtaDisabled = false,
     onTertiaryCtaClick = _noop,
   } = actions || {};
@@ -175,8 +175,12 @@ const MuiDialog = (props: ModalProps) => {
                     }`}
                     variant="text"
                     onClick={onTertiaryCtaClick}
-                    loading={isTertiaryCtaLoading}
-                    disabled={isTertiaryCtaDisabled}
+                    loading={!!isTertiaryCtaLoading}
+                    disabled={
+                      isTertiaryCtaDisabled !== undefined
+                        ? isTertiaryCtaDisabled
+                        : !!(isPrimaryCtaLoading || isSecondaryCtaLoading)
+                    }
                     startIcon={tertiaryCtaStartIcon}
                   >
                     {tertiaryCtaTitle}
@@ -185,22 +189,31 @@ const MuiDialog = (props: ModalProps) => {
                     className={`vi-dialog-actions ${MODAL_SIZE_VS_CLASS_NAMES[selectedSize]}`}
                   >
                     {secondaryCtaTitle && (
-                      <Button
+                      <LoadingButton
                         className="vi-dialog-cta"
                         variant="outlined"
                         onClick={onSecondaryCtaClick}
-                        disabled={isSecondaryCtaDisabled}
+                        disabled={
+                          isSecondaryCtaDisabled !== undefined
+                            ? isSecondaryCtaDisabled
+                            : !!(isPrimaryCtaLoading || isTertiaryCtaLoading)
+                        }
+                        loading={!!isSecondaryCtaLoading}
                       >
                         {secondaryCtaTitle}
-                      </Button>
+                      </LoadingButton>
                     )}
                     {primaryCtaTitle && (
                       <LoadingButton
                         className={`vi-dialog-cta ${subtype === "destructive" ? "destructive" : ""}`}
                         variant="contained"
                         onClick={onPrimaryCtaClick}
-                        loading={isPrimaryCtaLoading}
-                        disabled={isPrimaryCtaDisabled}
+                        loading={!!isPrimaryCtaLoading}
+                        disabled={
+                          isPrimaryCtaDisabled !== undefined
+                            ? isPrimaryCtaDisabled
+                            : !!(isSecondaryCtaLoading || isTertiaryCtaLoading)
+                        }
                       >
                         {primaryCtaTitle}
                       </LoadingButton>
@@ -212,22 +225,31 @@ const MuiDialog = (props: ModalProps) => {
                   className={`vi-dialog-actions without-tertiary ${MODAL_SIZE_VS_CLASS_NAMES[selectedSize]}`}
                 >
                   {secondaryCtaTitle && (
-                    <Button
+                    <LoadingButton
                       className="vi-dialog-cta"
                       variant="outlined"
                       onClick={onSecondaryCtaClick}
-                      disabled={isSecondaryCtaDisabled}
+                      disabled={
+                        isSecondaryCtaDisabled !== undefined
+                          ? isSecondaryCtaDisabled
+                          : !!(isPrimaryCtaLoading || isTertiaryCtaLoading)
+                      }
+                      loading={!!isSecondaryCtaLoading}
                     >
                       {secondaryCtaTitle}
-                    </Button>
+                    </LoadingButton>
                   )}
                   {primaryCtaTitle && (
                     <LoadingButton
                       className={`vi-dialog-cta ${subtype === "destructive" ? "destructive" : ""}`}
                       variant="contained"
                       onClick={onPrimaryCtaClick}
-                      loading={isPrimaryCtaLoading}
-                      disabled={isPrimaryCtaDisabled}
+                      loading={!!isPrimaryCtaLoading}
+                      disabled={
+                        isPrimaryCtaDisabled !== undefined
+                          ? isPrimaryCtaDisabled
+                          : !!(isSecondaryCtaLoading || isTertiaryCtaLoading)
+                      }
                     >
                       {primaryCtaTitle}
                     </LoadingButton>

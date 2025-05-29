@@ -114,19 +114,21 @@ const MyComponent = () => {
 
 ### Action Props
 
-| Prop                     | Type              | Required | Default | Description                           |
-| ------------------------ | ----------------- | -------- | ------- | ------------------------------------- |
-| `primaryCtaTitle`        | `string`          | No       | -       | Primary button text                   |
-| `secondaryCtaTitle`      | `string`          | No       | -       | Secondary button text                 |
-| `tertiaryCtaTitle`       | `string`          | No       | -       | Tertiary button text                  |
-| `isPrimaryCtaLoading`    | `boolean`         | No       | `false` | Show loading state for primary button |
-| `isPrimaryCtaDisabled`   | `boolean`         | No       | `false` | Disable primary button                |
-| `isSecondaryCtaDisabled` | `boolean`         | No       | `false` | Disable secondary button              |
-| `isTertiaryCtaDisabled`  | `boolean`         | No       | `false` | Disable tertiary button               |
-| `onPrimaryCtaClick`      | `() => void`      | No       | -       | Primary button click handler          |
-| `onSecondaryCtaClick`    | `() => void`      | No       | -       | Secondary button click handler        |
-| `onTertiaryCtaClick`     | `() => void`      | No       | -       | Tertiary button click handler         |
-| `tertiaryCtaStartIcon`   | `React.ReactNode` | No       | -       | Icon for tertiary button              |
+| Prop                     | Type              | Required | Default                                         | Description                             |
+| ------------------------ | ----------------- | -------- | ----------------------------------------------- | --------------------------------------- |
+| `primaryCtaTitle`        | `string`          | No       | -                                               | Primary button text                     |
+| `secondaryCtaTitle`      | `string`          | No       | -                                               | Secondary button text                   |
+| `tertiaryCtaTitle`       | `string`          | No       | -                                               | Tertiary button text                    |
+| `isPrimaryCtaLoading`    | `boolean`         | No       | `false`                                         | Show loading state for primary button   |
+| `isSecondaryCtaLoading`  | `boolean`         | No       | `false`                                         | Show loading state for secondary button |
+| `isTertiaryCtaLoading`   | `boolean`         | No       | `false`                                         | Show loading state for tertiary button  |
+| `isPrimaryCtaDisabled`   | `boolean`         | No       | `isSecondaryCtaLoading or isTertiaryCtaLoading` | Disable primary button                  |
+| `isSecondaryCtaDisabled` | `boolean`         | No       | `isPrimaryCtaLoading or isTertiaryCtaLoading`   | Disable secondary button                |
+| `isTertiaryCtaDisabled`  | `boolean`         | No       | `isPrimaryCtaLoading or isSecondaryCtaLoading`  | Disable tertiary button                 |
+| `onPrimaryCtaClick`      | `() => void`      | No       | -                                               | Primary button click handler            |
+| `onSecondaryCtaClick`    | `() => void`      | No       | -                                               | Secondary button click handler          |
+| `onTertiaryCtaClick`     | `() => void`      | No       | -                                               | Tertiary button click handler           |
+| `tertiaryCtaStartIcon`   | `React.ReactNode` | No       | -                                               | Icon for tertiary button                |
 
 ## Size Breakpoints
 
