@@ -13,6 +13,7 @@ interface IActions {
   isPrimaryCtaLoading?: boolean;
   isPrimaryCtaDisabled?: boolean;
   isSecondaryCtaDisabled?: boolean;
+  isSecondaryCtaLoading?: boolean;
   onPrimaryCtaClick?: () => void;
   onSecondaryCtaClick?: () => void;
   tertiaryCtaTitle?: string;
