@@ -23,6 +23,12 @@ jobs:
       - name: Build package
         run: npm run build
 
+      - name: Configure npm
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > .npmrc
+          echo "registry=https://registry.npmjs.org/" >> .npmrc
+          echo "always-auth=true" >> .npmrc
+
       - name: Publish to npm
         run: npm publish --access public
         env:
