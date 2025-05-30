@@ -6,7 +6,14 @@ on:
 
 jobs:
   publish:
+    contents: write
+      packages: write
+      pull-requests: write
+
     runs-on: ubuntu-latest
+    env:
+      CONFIG_TYPE: "UAT"
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -18,10 +25,20 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
-      - name: Build package
+      - run: npm install husky
+
+      - name: Build the package
         run: npm run build
+
+      - name: Stash uncommitted changes
+        run: git stash --include-untracked
+
+      - name: Commit version bump
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
 
       - name: Publish to npm
         run: npm publish --access public
