@@ -6,9 +6,10 @@ on:
 
 jobs:
   publish:
-    contents: write
-      packages: write
-      pull-requests: write
+    permissions:
+       contents: write
+       packages: write
+       pull-requests: write
 
     runs-on: ubuntu-latest
     env:
@@ -23,6 +24,7 @@ jobs:
         with:
           node-version: "20.x"
           registry-url: "https://registry.npmjs.org"
+          cache: 'yarn'
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
