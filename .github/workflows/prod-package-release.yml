@@ -25,12 +25,12 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: Install dependencies
-        run: npm install
+        run: yarn install --frozen-lockfile
 
-      - run: npm install husky
+      - run: yarn add husky --dev
 
       - name: Build the package
-        run: npm run build
+        run: yarn build
 
       - name: Stash uncommitted changes
         run: git stash --include-untracked
@@ -41,6 +41,6 @@ jobs:
           git config --global user.email "actions@github.com"
 
       - name: Publish to npm
-        run: npm publish --access public
+        run: yarn publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
