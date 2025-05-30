@@ -23,10 +23,6 @@ jobs:
 
       - name: Setup Nodejs and npm
         uses: actions/setup-node@v4
-        with:
-          node-version: "20.x"
-          registry-url: 'https://registry.npmjs.org'
-          scope: "@viplatform"
 
       - name: Install dependencies
         run: npm install
@@ -53,10 +49,6 @@ jobs:
       - name: Bump package version to alpha
         run: |
           npm version prerelease --preid=alpha.$(git rev-parse --short HEAD)
-
-      - run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - uses: release-drafter/release-drafter@v6
         id: release-drafter
