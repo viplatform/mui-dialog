@@ -32,20 +32,20 @@
     "material"
   ],
   "scripts": {
-    "build": "npm run lint && vite build",
-    "lint": "npx tsc --noEmit && eslint",
-    "lint:fix": "npm run lint --fix",
+    "build": "yarn lint && vite build",
+    "lint": "tsc --noEmit && eslint",
+    "lint:fix": "yarn lint --fix",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "vitest",
     "release": "standard-version",
     "coverage": "vitest run --coverage",
     "prepare": "husky",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "yarn build"
   },
   "standard-version": {
     "scripts": {
-      "prerelease": "npm run build"
+      "prerelease": "yarn build"
     },
     "skip": {
       "changelog": true
