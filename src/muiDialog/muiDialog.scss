@@ -3,6 +3,33 @@
     cursor: pointer;
     color: #717371;
   }
+  .p-24 {
+    padding: 24px;
+  }
+
+  .h-fill {
+    height: -webkit-fill-available;
+  }
+
+  .d-f {
+    display: flex;
+  }
+
+  .ai-c{
+    align-items: center;
+  } 
+  
+  .jc-sb {
+    justify-content: space-between;
+  }
+
+  .flex-dir-col {
+    flex-direction: column;
+  }
+
+  .gap-8 {
+    gap: 8px;
+  }
 
   .MuiPaper-root {
     border-radius: 12px;
