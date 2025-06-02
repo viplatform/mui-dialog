@@ -1,9 +1,8 @@
 name: Publish Alpha package
 
 on:
-  push:
-    branches:
-      - main
+  release:
+      types: [published]
 
 jobs:
   alpha-publish:
@@ -45,27 +44,10 @@ jobs:
       - name: Stash uncommitted changes
         run: git stash --include-untracked
 
-      - name: Commit version bump
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-
-      - name: Extract version from package.json
-        id: extract_version
-        run: |
-          VERSION=$(node -p "require('./package.json').version")
-          echo "RELEASE_VERSION=$VERSION" >> $GITHUB_ENV
-
-      - name: Bump package version to alpha
-        run: |
-          npm version prerelease --preid=alpha.$(git rev-parse --short HEAD)
-
-      - uses: release-drafter/release-drafter@v6
-        id: release-drafter
-        with:
-          config-name: release-drafter.yaml
-          disable-autolabeler: true
-          tag: ${{ env.RELEASE_VERSION }}
-          release: ${{ env.RELEASE_VERSION }}
+      - name: Publish package to npm
+        run: yarn publish --non-interactive
         env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+
+
