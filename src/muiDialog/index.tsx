@@ -8,6 +8,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { ThemeProvider, useTheme } from "@mui/material/styles";
 import { Divider } from "@mui/material";
 import _noop from "lodash/noop";
+import _isEmpty from "lodash/isEmpty";
 
 import { dialogTypography, muiTheme } from "../muiTheme";
 
@@ -42,14 +43,16 @@ const TransitionUp = forwardRef<HTMLDivElement, SlideProps>(
 );
 
 const MuiDialog = (props: ModalProps) => {
-  let parentTheme = useTheme();
-  parentTheme = {
-    ...parentTheme,
-    typography: {
-      ...parentTheme.typography,
-      ...dialogTypography,
-    },
-  };
+  const parentTheme = useTheme();
+  const currentTheme = _isEmpty(parentTheme)
+    ? muiTheme
+    : {
+        ...parentTheme,
+        typography: {
+          ...parentTheme.typography,
+          ...dialogTypography,
+        },
+      };
 
   const isMobile = useMediaQuery("(min-width:600px)");
   const subtype =
@@ -78,6 +81,7 @@ const MuiDialog = (props: ModalProps) => {
     tertiaryCtaType = "default",
     ...rest
   } = props;
+
   const {
     primaryCtaTitle,
     secondaryCtaTitle,
@@ -115,8 +119,6 @@ const MuiDialog = (props: ModalProps) => {
       onClose();
     }
   };
-
-  const currentTheme = parentTheme || muiTheme;
 
   return (
     <ThemeProvider theme={currentTheme}>
