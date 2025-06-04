@@ -85,16 +85,16 @@ const MuiDialog = (props: ModalProps) => {
   const {
     primaryCtaTitle,
     secondaryCtaTitle,
-    isPrimaryCtaLoading,
-    isSecondaryCtaLoading,
-    isPrimaryCtaDisabled = false,
-    isSecondaryCtaDisabled = false,
+    isPrimaryCtaLoading = false,
+    isSecondaryCtaLoading = false,
+    isPrimaryCtaDisabled,
+    isSecondaryCtaDisabled,
     onPrimaryCtaClick = _noop,
     onSecondaryCtaClick = _noop,
     tertiaryCtaTitle,
     tertiaryCtaStartIcon,
-    isTertiaryCtaLoading,
-    isTertiaryCtaDisabled = false,
+    isTertiaryCtaLoading = false,
+    isTertiaryCtaDisabled,
     onTertiaryCtaClick = _noop,
   } = actions || {};
 
