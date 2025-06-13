@@ -62,6 +62,9 @@ export default defineConfig({
     dts({
       rollupTypes: true,
       exclude: ["/**/*.stories.tsx", "/**/*.test.tsx"],
+      insertTypesEntry: true,
+      outDir: "dist",
+      include: ["src/**/*.ts", "src/**/*.tsx"],
     }),
     cssInjectedByJsPlugin(),
   ],

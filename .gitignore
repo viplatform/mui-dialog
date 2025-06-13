@@ -29,3 +29,5 @@ yarn-error.log*
 # Sentry Config File
 .sentryclirc
 .qodo
+
+storybook-static
