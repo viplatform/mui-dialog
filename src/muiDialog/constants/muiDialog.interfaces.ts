@@ -18,7 +18,7 @@ interface IActions {
   onPrimaryCtaClick?: () => void;
   onSecondaryCtaClick?: () => void;
   tertiaryCtaTitle?: string;
-  tertiaryCtaStartIcon?: React.ReactElement;
+  tertiaryCtaStartIcon?: React.ReactNode;
   isTertiaryCtaLoading?: boolean;
   isTertiaryCtaDisabled?: boolean;
   onTertiaryCtaClick?: () => void;
