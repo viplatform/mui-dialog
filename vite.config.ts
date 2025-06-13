@@ -60,11 +60,20 @@ export default defineConfig({
     peerDepsExternal(),
     react(),
     dts({
-      rollupTypes: true,
+      rollupTypes: false,
       exclude: ["/**/*.stories.tsx", "/**/*.test.tsx"],
       insertTypesEntry: true,
       outDir: "dist",
       include: ["src/**/*.ts", "src/**/*.tsx"],
+      staticImport: true,
+      compilerOptions: {
+        baseUrl: ".",
+        paths: {
+          "@assets/*": ["src/assets/*"],
+          "@shared/*": ["src/shared/*"],
+          "@components/*": ["src/components/*"],
+        },
+      },
     }),
     cssInjectedByJsPlugin(),
   ],
