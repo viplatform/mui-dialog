@@ -30,4 +30,5 @@ yarn-error.log*
 .sentryclirc
 .qodo
 
+# Storybook
 storybook-static/
