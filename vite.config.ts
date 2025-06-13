@@ -60,15 +60,11 @@ export default defineConfig({
     peerDepsExternal(),
     react(),
     dts({
-      rollupTypes: false,
+      rollupTypes: true,
       exclude: ["/**/*.stories.tsx", "/**/*.test.tsx"],
       insertTypesEntry: true,
       outDir: "dist",
       include: ["src/**/*.ts", "src/**/*.tsx"],
-      afterBuild: () => {
-        // This ensures the types are generated after the build
-        return Promise.resolve();
-      },
     }),
     cssInjectedByJsPlugin(),
   ],
