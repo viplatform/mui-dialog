@@ -60,8 +60,11 @@ export default defineConfig({
     peerDepsExternal(),
     react(),
     dts({
-      rollupTypes: true,
-      exclude: ["/**/*.stories.tsx", "/**/*.test.tsx"],
+      include: ["src/**/*.ts", "src/**/*.tsx"],
+      exclude: ["src/**/*.stories.tsx", "src/**/*.test.tsx"],
+      outDir: "dist",
+      staticImport: true,
+      insertTypesEntry: true,
     }),
     cssInjectedByJsPlugin(),
   ],

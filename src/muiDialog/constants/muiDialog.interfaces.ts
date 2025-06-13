@@ -1,3 +1,4 @@
+import React from "react";
 import {
   CONFIRMATION_SUBTYPES,
   INFORMATION_SUBTYPES,
@@ -17,7 +18,7 @@ interface IActions {
   onPrimaryCtaClick?: () => void;
   onSecondaryCtaClick?: () => void;
   tertiaryCtaTitle?: string;
-  tertiaryCtaStartIcon?: React.ReactNode;
+  tertiaryCtaStartIcon?: React.ReactElement;
   isTertiaryCtaLoading?: boolean;
   isTertiaryCtaDisabled?: boolean;
   onTertiaryCtaClick?: () => void;
