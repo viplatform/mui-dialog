@@ -123,7 +123,7 @@ const MuiDialog = (props: ModalProps) => {
   return (
     <ThemeProvider theme={currentTheme}>
       <Dialog
-        TransitionComponent={isMobile ? TransitionUp : undefined}
+        TransitionComponent={isMobile ? (TransitionUp as any) : undefined}
         className={`vi-dialog ${MODAL_SIZE_VS_CLASS_NAMES[selectedSize]} ${wrapperClassName}`}
         open={open}
         onClose={handleClose}
@@ -138,9 +138,13 @@ const MuiDialog = (props: ModalProps) => {
             >
               <div className="d-f ai-c jc-sb">
                 <div className="d-f flex-dir-col gap-8">
-                  <Typography variant="semiBoldLabelL">{title}</Typography>
+                  <Typography variant="semiBoldLabelL">
+                    {title as React.ReactNode}
+                  </Typography>
                   {subTitle && (
-                    <Typography variant="subtextM">{subTitle}</Typography>
+                    <Typography variant="subtextM">
+                      {subTitle as React.ReactNode}
+                    </Typography>
                   )}
                 </div>
                 {showCloseIcon && (
@@ -153,12 +157,8 @@ const MuiDialog = (props: ModalProps) => {
                 )}
               </div>
               {description && (
-                <Typography
-                  component="div"
-                  className="description"
-                  // variant="subtextM"
-                >
-                  {description}
+                <Typography component="div" className="description">
+                  {description as React.ReactNode}
                 </Typography>
               )}
             </div>
@@ -183,7 +183,7 @@ const MuiDialog = (props: ModalProps) => {
                         ? isTertiaryCtaDisabled
                         : !!(isPrimaryCtaLoading || isSecondaryCtaLoading)
                     }
-                    startIcon={tertiaryCtaStartIcon}
+                    startIcon={tertiaryCtaStartIcon as React.ReactNode}
                   >
                     {tertiaryCtaTitle}
                   </LoadingButton>
