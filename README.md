@@ -4,7 +4,7 @@ A reusable dialog component for React applications built with Material-UI (MUI).
 
 ## Documentation
 
-For detailed documentation and examples, visit our [Storybook](https://storybook.viplatform.net/mui-dialog/).
+For detailed documentation and examples, visit our [Storybook](https://storybook.viplatform.net/mui-dialog/index.html).
 
 ## Installation
 
