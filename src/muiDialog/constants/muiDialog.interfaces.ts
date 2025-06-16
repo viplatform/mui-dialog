@@ -9,6 +9,7 @@ import {
 
 interface IActions {
   primaryCtaTitle?: string;
+  primaryCtaEndIcon?: JSX.Element;
   secondaryCtaTitle?: string;
   isPrimaryCtaLoading?: boolean;
   isPrimaryCtaDisabled?: boolean;

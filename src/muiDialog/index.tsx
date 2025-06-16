@@ -85,6 +85,7 @@ const MuiDialog = (props: ModalProps) => {
   const {
     primaryCtaTitle,
     secondaryCtaTitle,
+    primaryCtaEndIcon,
     isPrimaryCtaLoading = false,
     isSecondaryCtaLoading = false,
     isPrimaryCtaDisabled,
@@ -216,6 +217,7 @@ const MuiDialog = (props: ModalProps) => {
                             ? isPrimaryCtaDisabled
                             : !!(isSecondaryCtaLoading || isTertiaryCtaLoading)
                         }
+                        endIcon={primaryCtaEndIcon}
                       >
                         {primaryCtaTitle}
                       </LoadingButton>
@@ -252,6 +254,7 @@ const MuiDialog = (props: ModalProps) => {
                           ? isPrimaryCtaDisabled
                           : !!(isSecondaryCtaLoading || isTertiaryCtaLoading)
                       }
+                      endIcon={primaryCtaEndIcon}
                     >
                       {primaryCtaTitle}
                     </LoadingButton>
