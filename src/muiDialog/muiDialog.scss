@@ -11,6 +11,10 @@
     height: -webkit-fill-available;
   }
 
+  .safari-height-fix {
+    height: fit-content;
+  }
+
   .d-f {
     display: flex;
   }
