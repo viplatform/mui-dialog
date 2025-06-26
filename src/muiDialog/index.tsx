@@ -27,6 +27,7 @@ import {
   InformationModalProps,
   InputModalProps,
 } from "./constants/muiDialog.interfaces";
+import { IS_SAFARI } from "./constants/muiDialog.general";
 
 import "./muiDialog.scss";
 
@@ -132,7 +133,7 @@ const MuiDialog = (props: ModalProps) => {
         fullWidth={true}
         {...rest}
       >
-        <div className="p-24 h-fill">
+        <div className={`p-24 h-fill ${IS_SAFARI ? 'safari-height-fix' : ''}`}>
           {title && (
             <div
               className={`vi-dialog-title ${MODAL_SIZE_VS_CLASS_NAMES[selectedSize]}`}
