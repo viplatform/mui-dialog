@@ -35,6 +35,8 @@ export interface BaseModalProps {
   actions?: IActions;
   showDivider?: boolean;
   showActions?: boolean;
+  disableEnforceFocus?: boolean;
+  disableRestoreFocus?: boolean;
 }
 
 export interface InformationModalProps extends BaseModalProps {
