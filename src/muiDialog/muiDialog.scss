@@ -84,6 +84,11 @@
 
     .vi-dialog-cta.destructive {
       background-color: #ed1d31;
+      color: #fff;
+
+      &:disabled {
+        opacity: 0.5;
+      }
     }
   }
 
