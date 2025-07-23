@@ -1,8 +1,8 @@
-name: Publish Alpha package
+name: Publish NPM package
 
 on:
   release:
-      types: [published]
+    types: [published]
 
 jobs:
   alpha-publish:
@@ -24,9 +24,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20.x"
-          registry-url: 'https://registry.npmjs.org'
+          registry-url: "https://registry.npmjs.org"
           scope: "@viplatform"
-          cache: 'yarn'
+          cache: "yarn"
 
       - name: Setup yarn
         run: npm install -g yarn
@@ -48,6 +48,3 @@ jobs:
         run: yarn publish --non-interactive
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-
-
