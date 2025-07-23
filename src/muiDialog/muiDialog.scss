@@ -19,10 +19,10 @@
     display: flex;
   }
 
-  .ai-c{
+  .ai-c {
     align-items: center;
-  } 
-  
+  }
+
   .jc-sb {
     justify-content: space-between;
   }
@@ -115,11 +115,6 @@
     margin-left: 75%;
   }
 
-  .vi-dialog-actions.with-tertiary-cta {
-    max-width: 100%;
-    margin-left: 0;
-  }
-
   .vi-dialog-title {
     margin-bottom: 28px;
 
@@ -156,9 +151,9 @@
       gap: 12px;
     }
 
-    .vi-dialog-actions.medium,
-    .vi-dialog-actions.large,
-    .vi-dialog-actions.extra-large {
+    .vi-dialog-actions.without-tertiary.medium,
+    .vi-dialog-actions.without-tertiary.large,
+    .vi-dialog-actions.without-tertiary.extra-large {
       max-width: 100%;
       margin-left: 0;
     }
