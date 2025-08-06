@@ -138,10 +138,10 @@ const MyComponent = () => {
 
 | Size         | Breakpoint | Max Width |
 | ------------ | ---------- | --------- |
-| `small`      | `xs`       | 600px     |
-| `medium`     | `sm`       | 900px     |
-| `large`      | `md`       | 1200px    |
-| `extraLarge` | `lg`       | 1536px    |
+| `small`      | `xs`       | 444px     |
+| `medium`     | `sm`       | 600px     |
+| `large`      | `md`       | 900px     |
+| `extraLarge` | `lg`       | 1200px    |
 
 ## Usage Example
 
