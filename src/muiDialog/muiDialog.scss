@@ -118,6 +118,12 @@
   .vi-dialog-title {
     margin-bottom: 28px;
 
+    .title-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
     .description {
       margin-top: 16px !important;
     }

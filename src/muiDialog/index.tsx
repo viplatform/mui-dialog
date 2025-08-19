@@ -133,25 +133,25 @@ const MuiDialog = (props: ModalProps) => {
         fullWidth={true}
         {...rest}
       >
-        <div className={`p-24 h-fill ${IS_SAFARI ? 'safari-height-fix' : ''}`}>
+        <div className={`p-24 h-fill ${IS_SAFARI ? "safari-height-fix" : ""}`}>
           {title && (
             <div
               className={`vi-dialog-title ${MODAL_SIZE_VS_CLASS_NAMES[selectedSize]}`}
             >
-              <div className="d-f ai-c jc-sb">
-                <div className="d-f flex-dir-col gap-8">
+              <div className="d-f flex-dir-col gap-8">
+                <div className="title-wrapper">
                   <Typography variant="semiBoldLabelL">{title}</Typography>
-                  {subTitle && (
-                    <Typography variant="subtextM">{subTitle}</Typography>
+                  {showCloseIcon && (
+                    <CloseIcon
+                      fontSize="small"
+                      className="close-icon"
+                      aria-label="Close dialog"
+                      onClick={onClose}
+                    />
                   )}
                 </div>
-                {showCloseIcon && (
-                  <CloseIcon
-                    fontSize="small"
-                    className="close-icon"
-                    aria-label="Close dialog"
-                    onClick={onClose}
-                  />
+                {subTitle && (
+                  <Typography variant="subtextM">{subTitle}</Typography>
                 )}
               </div>
               {description && (
