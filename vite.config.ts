@@ -1,18 +1,15 @@
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import dts from "vite-plugin-dts";
-import { defineConfig } from "vitest/config";
+import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const path = require("node:path");
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  test: {
-    environment: "jsdom",
-    globals: true,
-  },
   resolve: {
     alias: {
       "@assets": path.resolve(__dirname, "./src/assets"),
