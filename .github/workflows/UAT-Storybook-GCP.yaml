@@ -2,7 +2,7 @@ name: UAT-Storybook-GCP
 on:
   push:
     branches:
-      - "gcp-uat-action"
+      - "main"
 
 permissions:
   contents: write
