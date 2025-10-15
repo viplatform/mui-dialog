@@ -1,0 +1,47 @@
+name: UAT-Storybook-GCP
+on:
+  push:
+    branches:
+      - "main"
+
+permissions:
+  contents: write
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    permissions:
+      contents: write
+      pull-requests: write
+    name: Build
+    runs-on: ubuntu-latest
+    env:
+      CONFIG_TYPE: "UAT"
+      ASSET_BASE_URL: "https://assets-gcp.viplatform.net/mui-dialog"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Nodejs, Install Dependencies, and Build Storybook
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.12.0"
+
+      - run: yarn install
+
+      - run: yarn build-storybook
+
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Upload storybook to GCS bucket
+        run: |
+          gsutil -m rsync -r -d ./storybook-static gs://non-prod-vi-storybook/mui-dialog
+
