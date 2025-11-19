@@ -1,0 +1,51 @@
+name: Production (GCP)
+on:
+  release:
+    types: [published]
+  push:
+    branches:
+      - 'prod-gcp'
+permissions:
+  contents: write
+jobs:
+  build:
+    permissions:
+      id-token: write
+      contents: write
+      pull-requests: write
+    name: Build and Publish Storybook
+    runs-on: ubuntu-latest
+    env:
+      CONFIG_TYPE: "PRODUCTION"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Nodejs, Install Dependencies, and Build Storybook
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.10.0"
+
+      - run: yarn install --immutable
+
+      - run: yarn build-storybook
+
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_PROD_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Upload storybook to GCS bucket
+        run: |
+          gsutil -m rsync -r -d ./storybook-static gs://prod-vi-storybook/mui-dialog
+
+      - name: Invalidate storybook CDN cache
+        run: |
+          gcloud compute url-maps invalidate-cdn-cache prod-vi-storybook-url-map \
+            --path "/mui-dialog/*" \
+            --global \
+            --async
+
