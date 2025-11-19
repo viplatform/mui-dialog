@@ -30,10 +30,25 @@ jobs:
 
       - run: yarn build-storybook
 
+      - name: Validate GCP credentials
+        shell: bash
+        run: |
+          if [ -z "$GCP_PROD_SA_KEY" ]; then
+            echo "::error::GCP_PROD_SA_KEY environment variable is not set or is empty"
+            echo "Please ensure the GCP_PROD_SA_KEY secret is configured in your repository"
+            exit 1
+          fi
+          echo "✓ GCP_PROD_SA_KEY is set (length: ${#GCP_PROD_SA_KEY} characters)"
+        env:
+          GCP_PROD_SA_KEY: ${{ secrets.GCP_PROD_SA_KEY }}
+
       - name: Authenticate to GCP
         uses: google-github-actions/auth@v2
+        env:
+          GCP_PROD_SA_KEY: ${{ secrets.GCP_PROD_SA_KEY }}
         with:
           credentials_json: ${{ secrets.GCP_PROD_SA_KEY }}
+          project_id: virtualinternshipsinfra
 
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
@@ -47,5 +62,6 @@ jobs:
           gcloud compute url-maps invalidate-cdn-cache prod-vi-storybook-url-map \
             --path "/mui-dialog/*" \
             --global \
+            --project=virtualinternshipsinfra \
             --async
 
