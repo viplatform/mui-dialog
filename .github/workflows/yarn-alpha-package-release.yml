@@ -50,15 +50,28 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
 
-      - name: Extract version from package.json
+      - name: Bump package version to alpha
+        id: bump_version
+        run: |
+          # Bump version without creating git tag (release-drafter will create it)
+          NEW_VERSION=$(npm version prerelease --preid=alpha.$(git rev-parse --short HEAD) --no-git-tag-version)
+          # Remove 'v' prefix if present
+          NEW_VERSION=${NEW_VERSION#v}
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+          echo "New version: $NEW_VERSION"
+          
+      - name: Commit version bump
+        run: |
+          git add package.json package-lock.json
+          git commit -m "chore: bump version to ${{ env.NEW_VERSION }}" || exit 0
+          git push origin main || exit 0
+
+      - name: Extract version from package.json (after bump)
         id: extract_version
         run: |
           VERSION=$(node -p "require('./package.json').version")
           echo "RELEASE_VERSION=$VERSION" >> $GITHUB_ENV
-
-      - name: Bump package version to alpha
-        run: |
-          npm version prerelease --preid=alpha.$(git rev-parse --short HEAD)
+          echo "Release version: $VERSION"
 
       - uses: release-drafter/release-drafter@v6
         id: release-drafter
