@@ -1,11 +1,11 @@
-name: Publish NPM package
+name: Publish Prod Package
 
 on:
   release:
     types: [published]
 
 jobs:
-  alpha-publish:
+  prod-publish:
     permissions:
       contents: write
       packages: write
@@ -14,11 +14,14 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      CONFIG_TYPE: "UAT"
+      CONFIG_TYPE: "PRODUCTION"
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          # Checkout the release tag to build the correct version
+          ref: ${{ github.event.release.tag_name }}
 
       - name: Setup Nodejs and npm
         uses: actions/setup-node@v4
@@ -31,7 +34,7 @@ jobs:
       - name: Setup yarn
         run: npm install -g yarn
 
-      - name: Build prod install
+      - name: Install dependencies
         uses: borales/actions-yarn@v4
         with:
           cmd: install

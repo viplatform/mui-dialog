@@ -70,8 +70,14 @@ jobs:
         id: extract_version
         run: |
           VERSION=$(node -p "require('./package.json').version")
-          echo "RELEASE_VERSION=$VERSION" >> $GITHUB_ENV
-          echo "Release version: $VERSION"
+          echo "PACKAGE_VERSION=$VERSION" >> $GITHUB_ENV
+          echo "Package version (with alpha): $VERSION"
+          
+          # Extract base version without alpha suffix for release tag/name
+          # e.g., "1.0.0-alpha.abc123" -> "1.0.0"
+          BASE_VERSION=$(echo "$VERSION" | sed 's/-alpha\..*//' | sed 's/-alpha//')
+          echo "RELEASE_VERSION=$BASE_VERSION" >> $GITHUB_ENV
+          echo "Release version (without alpha): $BASE_VERSION"
 
       - uses: release-drafter/release-drafter@v6
         id: release-drafter
