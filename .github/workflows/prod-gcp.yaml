@@ -27,16 +27,8 @@ jobs:
 
       - run: yarn build-storybook
 
-      - name: Checkout helmcharts for actions
-        uses: actions/checkout@v4
-        with:
-          repository: viplatform/helmcharts
-          ref: main
-          token: ${{ secrets.GH_PAT }}
-          path: .github/helmcharts
-
       - name: Deploy to GCP
-        uses: ./.github/helmcharts/actions/gcp-frontend-deploy
+        uses: viplatform/helmcharts/actions/gcp-frontend-deploy@main
         env:
           GCP_SA_KEY: ${{ secrets.GCP_PROD_SA_KEY }}
         with:
