@@ -27,38 +27,22 @@ jobs:
 
       - run: yarn build-storybook
 
-      - name: Validate GCP credentials
-        shell: bash
-        run: |
-          if [ -z "$GCP_PROD_SA_KEY" ]; then
-            echo "::error::GCP_PROD_SA_KEY environment variable is not set or is empty"
-            echo "Please ensure the GCP_PROD_SA_KEY secret is configured in your repository"
-            exit 1
-          fi
-          echo "✓ GCP_PROD_SA_KEY is set (length: ${#GCP_PROD_SA_KEY} characters)"
-        env:
-          GCP_PROD_SA_KEY: ${{ secrets.GCP_PROD_SA_KEY }}
-
-      - name: Authenticate to GCP
-        uses: google-github-actions/auth@v2
-        env:
-          GCP_PROD_SA_KEY: ${{ secrets.GCP_PROD_SA_KEY }}
+      - name: Checkout helmcharts for actions
+        uses: actions/checkout@v4
         with:
-          credentials_json: ${{ secrets.GCP_PROD_SA_KEY }}
+          repository: viplatform/helmcharts
+          ref: main
+          token: ${{ secrets.GH_PAT }}
+          path: .github/helmcharts
+
+      - name: Deploy to GCP
+        uses: ./.github/helmcharts/actions/gcp-frontend-deploy
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_PROD_SA_KEY }}
+        with:
+          assets_bucket_name: prod-vi-storybook
+          assets_path: mui-dialog
+          assets_dir: storybook-static
+          cdn_assets_url_map_name: prod-vi-storybook-url-map
           project_id: virtualinternshipsinfra
-
-      - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@v2
-
-      - name: Upload storybook to GCS bucket
-        run: |
-          gsutil -m rsync -r -d ./storybook-static gs://prod-vi-storybook/mui-dialog
-
-      - name: Invalidate storybook CDN cache
-        run: |
-          gcloud compute url-maps invalidate-cdn-cache prod-vi-storybook-url-map \
-            --path "/mui-dialog/*" \
-            --global \
-            --project=virtualinternshipsinfra \
-            --async
 
