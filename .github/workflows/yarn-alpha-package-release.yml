@@ -62,7 +62,7 @@ jobs:
           
       - name: Commit version bump
         run: |
-          git add package.json package-lock.json
+          git add package.json yarn.lock
           git commit -m "chore: bump version to ${{ env.NEW_VERSION }}" || exit 0
           git push origin main || exit 0
 
