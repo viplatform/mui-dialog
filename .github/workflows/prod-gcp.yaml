@@ -2,9 +2,6 @@ name: Production (GCP)
 on:
   release:
     types: [published]
-  push:
-    branches:
-      - 'prod-gcp'
 permissions:
   contents: write
 jobs:
