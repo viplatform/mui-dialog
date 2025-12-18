@@ -132,6 +132,8 @@ const MuiDialog = (props: ModalProps) => {
         maxWidth={SIZE_TO_MAX_WIDTH[selectedSize]}
         fullWidth={true}
         {...rest}
+        disableEnforceFocus
+      disableRestoreFocus
       >
         <div className={`p-24 h-fill ${IS_SAFARI ? "safari-height-fix" : ""}`}>
           {title && (
@@ -140,7 +142,7 @@ const MuiDialog = (props: ModalProps) => {
             >
               <div className="d-f flex-dir-col gap-8">
                 <div className="title-wrapper">
-                  <Typography variant="semiBoldLabelL">{title}</Typography>
+                  <Typography variant="semiBoldLabelL" className="modal-title">{title}</Typography>
                   {showCloseIcon && (
                     <CloseIcon
                       fontSize="small"

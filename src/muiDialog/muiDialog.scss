@@ -122,6 +122,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      .modal-title {
+        word-break: break-word;
+      }
     }
 
     .description {
