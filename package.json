@@ -7,7 +7,7 @@
     "url": "https://github.com/viplatform/mui-dialog/issues"
   },
   "homepage": "https://github.com/viplatform/mui-dialog#readme",
-  "version": "1.0.30",
+  "version": "1.0.31",
   "files": [
     "dist"
   ],
@@ -74,7 +74,8 @@
   "resolutions": {
     "lodash": ">=4.17.23",
     "glob": "^10.5.0",
-    "js-yaml": ">=4.1.1"
+    "js-yaml": ">=4.1.1",
+    "vite": "^6.4.1"
   },
   "devDependencies": {
     "@emotion/react": "^11.14.0",
