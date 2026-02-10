@@ -17,8 +17,7 @@ jobs:
       checks: write
       security-events: write
     name: gitleaks
-    runs-on:
-      labels: [self-hosted, dev-image-builder]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
