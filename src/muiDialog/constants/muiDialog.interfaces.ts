@@ -25,6 +25,7 @@ interface IActions {
 }
 export interface BaseModalProps {
   wrapperClassName?: string;
+  paperClassName?: string;
   onClose: () => void;
   open: boolean;
   showCloseIcon?: boolean;
