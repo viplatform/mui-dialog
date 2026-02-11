@@ -177,6 +177,7 @@ export const InformationModal: Story = {
     showDivider: true,
     showCloseIcon: true,
     wrapperClassName: "",
+    paperClassName: "",
     tertiaryCtaType: TERTIARY_CTA_TYPES.DEFAULT,
     children: <div>Additional content can go here</div>,
     actions: {

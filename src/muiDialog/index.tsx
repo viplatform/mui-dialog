@@ -67,6 +67,7 @@ const MuiDialog = (props: ModalProps) => {
 
   const {
     wrapperClassName,
+    paperClassName,
     open,
     type,
     size,
@@ -133,7 +134,8 @@ const MuiDialog = (props: ModalProps) => {
         fullWidth={true}
         {...rest}
         disableEnforceFocus
-      disableRestoreFocus
+        disableRestoreFocus
+        {...(paperClassName && { classes: { paper: paperClassName } })}
       >
         <div className={`p-24 h-fill ${IS_SAFARI ? "safari-height-fix" : ""}`}>
           {title && (
