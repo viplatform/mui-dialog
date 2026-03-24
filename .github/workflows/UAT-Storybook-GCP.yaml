@@ -27,7 +27,7 @@ jobs:
       - name: Setup Nodejs, Install Dependencies, and Build Storybook
         uses: actions/setup-node@v4
         with:
-          node-version: "22.12.0"
+          node-version: "22.x"
 
       - run: yarn install
 
