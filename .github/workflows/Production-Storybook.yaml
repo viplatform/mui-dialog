@@ -25,7 +25,7 @@ jobs:
       - name: Setup Nodejs, Install Dependencies, and Build Storybook
         uses: actions/setup-node@v4
         with:
-          node-version: "20.10.0"
+          node-version: "20.x"
 
       - run: yarn install --immutable
 
