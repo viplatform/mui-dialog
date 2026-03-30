@@ -7,7 +7,7 @@
     "url": "https://github.com/viplatform/mui-dialog/issues"
   },
   "homepage": "https://github.com/viplatform/mui-dialog#readme",
-  "version": "1.0.33",
+  "version": "1.0.34",
   "files": [
     "dist"
   ],
@@ -81,7 +81,8 @@
     "flatted": ">=3.4.2",
     "immutable": ">=5.1.5",
     "@eslint/plugin-kit": ">=0.3.4",
-    "rollup": ">=4.59.0"
+    "rollup": ">=4.59.0",
+    "handlebars": ">=4.7.9"
   },
   "devDependencies": {
     "@emotion/react": "^11.14.0",
