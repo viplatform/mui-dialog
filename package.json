@@ -74,17 +74,19 @@
   "resolutions": {
     "lodash": ">=4.18.0",
     "glob": "^10.5.0",
-    "js-yaml": ">=4.1.1",
-    "vite": "^6.4.2",
+    "js-yaml": ">=4.3.0",
+    "vite": "^6.4.3",
     "minimatch": ">=3.1.4",
-    "brace-expansion": ">=2.0.2",
+    "brace-expansion": ">=5.0.8",
     "flatted": ">=3.4.2",
-    "immutable": ">=5.1.5",
+    "immutable": ">=5.1.9",
     "@eslint/plugin-kit": ">=0.3.4",
     "rollup": ">=4.59.0",
     "handlebars": ">=4.7.9",
-    "fast-uri": ">=3.1.2",
-    "postcss": ">=8.5.10"
+    "fast-uri": ">=3.1.4",
+    "postcss": ">=8.5.18",
+    "@babel/core": "7.29.6",
+    "ws": "8.21.0"
   },
   "devDependencies": {
     "@emotion/react": "^11.14.0",
@@ -113,9 +115,9 @@
     "storybook": "^8.6.18",
     "terser": "^5.39.2",
     "typescript": "^5.8.3",
-    "vite": "^6.4.2",
+    "vite": "^6.4.3",
     "vite-plugin-css-injected-by-js": "^3.5.2",
     "vite-plugin-dts": "^4.5.3",
-    "vitest": "^3.1.1"
+    "vitest": "^3.2.6"
   }
 }
