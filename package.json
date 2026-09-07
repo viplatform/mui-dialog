@@ -41,7 +41,8 @@
     "release": "standard-version",
     "coverage": "vitest run --coverage",
     "prepare": "husky",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "yarn build",
+    "test:security-deps": "node scripts/verify-security-dependencies.mjs"
   },
   "standard-version": {
     "scripts": {
@@ -86,7 +87,8 @@
     "fast-uri": ">=3.1.4",
     "postcss": ">=8.5.18",
     "@babel/core": "7.29.6",
-    "ws": "8.21.0"
+    "ws": "8.21.0",
+    "browserslist": "4.28.7"
   },
   "devDependencies": {
     "@emotion/react": "^11.14.0",
@@ -119,5 +121,8 @@
     "vite-plugin-css-injected-by-js": "^3.5.2",
     "vite-plugin-dts": "^4.5.3",
     "vitest": "^3.2.6"
+  },
+  "overrides": {
+    "browserslist": "4.28.7"
   }
 }
