@@ -1,0 +1,458 @@
+{
+  "checked_at": "2026-10-08",
+  "repository": "mui-dialog",
+  "lockfile_sha256": {
+    "package-lock.json": "02b161f7fd532e06a70f973f2b43312554f6f3a288f36d3c2da38d78943ed74f",
+    "yarn.lock": "1acfc80ed90d8753077836654c233ce69964b26503c7bb2e7f236a67e03fd060"
+  },
+  "open_alerts_verified": [
+    {
+      "repo": "mui-dialog",
+      "alert": 104,
+      "package": "source-map-js",
+      "range": ">= 1.0.0, < 1.2.2",
+      "versions": [
+        "1.2.2"
+      ],
+      "manifest": "yarn.lock",
+      "remaining_vulnerable_versions": []
+    },
+    {
+      "repo": "mui-dialog",
+      "alert": 100,
+      "package": "source-map-js",
+      "range": ">= 1.0.0, < 1.2.2",
+      "versions": [
+        "1.2.2"
+      ],
+      "manifest": "package-lock.json",
+      "remaining_vulnerable_versions": []
+    },
+    {
+      "repo": "mui-dialog",
+      "alert": 97,
+      "package": "brace-expansion",
+      "range": ">= 4.0.0, < 5.0.12",
+      "versions": [
+        "1.1.21",
+        "2.1.7",
+        "5.0.12"
+      ],
+      "manifest": "package-lock.json",
+      "remaining_vulnerable_versions": []
+    }
+  ],
+  "package_versions_verified": [
+    {
+      "package": "source-map-js",
+      "version": "1.2.2",
+      "engines": {
+        "node": ">=0.10.0"
+      },
+      "dependencies": {},
+      "dist": {
+        "shasum": "79fb88d97535a21cb27162cb05d211b67acea4ab",
+        "tarball": "https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.2.tgz",
+        "fileCount": 18,
+        "integrity": "sha512-KGj/8Y43x35aZVDtt+J4mK1hoLGHULMYfSkODJNQjNDC3oW1PqPoxMwo0pLUsWM/UEGzON/NxeHywEfNXNP3Vw==",
+        "signatures": [
+          {
+            "sig": "MEUCIQCZPHMjtDeHbdrm8FkXj5rlr8cwbP4XoW93v0jVGGdWcQIgDcavClXA2dNCvB2XyxxKW7ZkgwaSlqeBeaayOtgq3ik=",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          },
+          {
+            "sig": "MEQCIAIRiJPeK+kn49RlwVL7LPl5GHFd6PnL/DKFgl/oQu6HAiBd4xIiwYFmu+pXEiZr7YrCXUt4BQ3XkahaDqCpu90zYA==",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "unpackedSize": 142723
+      },
+      "github_matches": [],
+      "node18_engine_supported": true,
+      "node20_engine_supported": true
+    },
+    {
+      "package": "fast-uri",
+      "version": "3.1.8",
+      "engines": {},
+      "dependencies": {},
+      "dist": {
+        "shasum": "f7db8d942e20eead3cfe93b0beeb4eb0169e938b",
+        "tarball": "https://registry.npmjs.org/fast-uri/-/fast-uri-3.1.8.tgz",
+        "fileCount": 44,
+        "integrity": "sha512-GZMtZUTNRpOVIECoXwLNZS5xUGE+mVNbTB8h/7Rwh2TFWcBQiPzTgyZi05BF9UMZKkLJv8XBRJTlU7zg8+ZfMg==",
+        "signatures": [
+          {
+            "sig": "MEQCIAFY8R/oklnujz86Qp91RCMZ7Q4UKVpOIyK6SVQucORxAiB3QAr2EGigSFZvLpNSMnMTSU+e6xRonnMOqbVfgCgmGw==",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          },
+          {
+            "sig": "MEQCIBapYWmwkYVjiNluF7sQZV/v5LCo8e8ABySbJBEICb0CAiAIZoX7yNR4Bh0DuxT3O6hMiBK+fJMbXyEtMYKHbj+Fkg==",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "unpackedSize": 220886
+      },
+      "github_matches": [],
+      "node18_engine_supported": true,
+      "node20_engine_supported": true
+    },
+    {
+      "package": "postcss-selector-parser",
+      "version": "7.1.6",
+      "engines": {
+        "node": ">=4"
+      },
+      "dependencies": {
+        "cssesc": "^3.0.0",
+        "util-deprecate": "^1.0.2"
+      },
+      "dist": {
+        "shasum": "45e970f2d93d4547d6754167ed1132f43012c4bf",
+        "tarball": "https://registry.npmjs.org/postcss-selector-parser/-/postcss-selector-parser-7.1.6.tgz",
+        "fileCount": 37,
+        "integrity": "sha512-7qASPzhKF2l2KLboRZux8CCTRMdGiV08vWmyKzPz22qZ7ZjQBOeY7rNzNoCLSUiftJ7HUq0GERHmxw/t0dCdMw==",
+        "signatures": [
+          {
+            "sig": "MEUCIARvTjM5MvisOcYdgtg4+teinUMCEMbWTigr+w/V7tvzAiEAxeE+X+IHLAlTmRn53zg+ojvC0x4gikJ78G1DfRKfJZg=",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          },
+          {
+            "sig": "MEYCIQDxnJJ31lCe5d/BEXkYm2ExC1wSkGJ24+qfFUQ62u8yuAIhALDUNyvN/kI7BTSqXQUzS5+/ORkpGQt+i87ttC0LWPLq",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "unpackedSize": 215009
+      },
+      "github_matches": [],
+      "node18_engine_supported": true,
+      "node20_engine_supported": true
+    },
+    {
+      "package": "brace-expansion",
+      "version": "1.1.21",
+      "engines": {},
+      "dependencies": {
+        "concat-map": "0.0.1",
+        "balanced-match": "^1.0.0"
+      },
+      "dist": {
+        "shasum": "edf4fab5c64d051aea5a8def49aba1c7522279f3",
+        "tarball": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.21.tgz",
+        "fileCount": 4,
+        "integrity": "sha512-9zeA+KLZNNzglF2TPKRQEDyx6Yby7daAkuy8MiPzpXPsYDWi/DRM8jmwUDxokQjYqBpv5DgPiwD4h4ZZSy1Ujw==",
+        "signatures": [
+          {
+            "sig": "MEUCIEpGNO6Ap5gYaU6eqeOpeU4bhJKXytH4Lqv+qn8tWP70AiEAgmtv6dYJ/sbiMeioq8VTAvlpDMIOF2bV7ojJ6qTtCIk=",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          },
+          {
+            "sig": "MEUCIQCsE4a0+wmILmbniwNtbsZAwHHlEiC/u0HpBs9/R0pwvgIgATLztBHUYS81VxfEvVfmSjwIFwwRSJAP8SlYYJWwn3A=",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "unpackedSize": 21359
+      },
+      "github_matches": [],
+      "node18_engine_supported": true,
+      "node20_engine_supported": true
+    },
+    {
+      "package": "brace-expansion",
+      "version": "2.1.7",
+      "engines": {},
+      "dependencies": {
+        "balanced-match": "^1.0.0"
+      },
+      "dist": {
+        "shasum": "14ea3836731823bb24740225ea43b941b436f9d1",
+        "tarball": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.1.7.tgz",
+        "fileCount": 5,
+        "integrity": "sha512-uZbew1NqdmPDTMJ8ah1y+b+9QEJrfkXFk3RcTQw3X0jW/xRUvFKsg1CfQdSYGdTbXZWExtU3J3ccxtnfw1Fi0g==",
+        "signatures": [
+          {
+            "sig": "MEUCIAkrqNzwWiBk2UvzBMWjKR6ADOa7s4M/lF7AY4spVPdBAiEAxPONwyYz2BJ4UMzDiq+dITWj2Rw95YswFp9O5Rm4CHs=",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          },
+          {
+            "sig": "MEUCIGUVEJydbSPyIXGiJHFk8mVVj0ty/cwj49wMwg9vVOLrAiEAoAfiMVysswnpDqFjhDeOasp8BMfphqjTn2FE69WmgHE=",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "unpackedSize": 19574
+      },
+      "github_matches": [],
+      "node18_engine_supported": true,
+      "node20_engine_supported": true
+    },
+    {
+      "package": "brace-expansion",
+      "version": "5.0.12",
+      "engines": {
+        "node": "20 || >=22"
+      },
+      "dependencies": {
+        "balanced-match": "^4.0.2"
+      },
+      "dist": {
+        "shasum": "995fbb4750a77c4d16a7dc942ff2ca6ef8e675ec",
+        "tarball": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.0.12.tgz",
+        "fileCount": 13,
+        "integrity": "sha512-YovQ3rzhaLMIrDjNDMkNS01tea93qhEhG5xy8f6+R0l+dw3Ki+5sCoIoI942iuLZTHWogWktgwVDhU09iNEimQ==",
+        "signatures": [
+          {
+            "sig": "MEQCIAMXX2WNJDJJkVHQORu87Mi5BGgEzbA21nhoBLCd5pVbAiAty43mX29opG/0V0Oh41VVzPRs+bijBdQ3ao+wyviCsg==",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          },
+          {
+            "sig": "MEUCIQDZemgdCtGEvGCCV16aS9sGD8McnOAM5EM80gowpoytHwIgNLc7QYBEXho5Tgpn5+IY2fXgSrvXlQejMT/jf5f+++o=",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "unpackedSize": 84997
+      },
+      "github_matches": [],
+      "node18_engine_supported": false,
+      "node20_engine_supported": true
+    },
+    {
+      "package": "nanoid",
+      "version": "3.3.18",
+      "engines": {
+        "node": "^10 || ^12 || ^13.7 || ^14 || >=15.0.1"
+      },
+      "dependencies": {},
+      "dist": {
+        "shasum": "f66a2de1199ffde0fcf21c8a5f13106b1c081913",
+        "tarball": "https://registry.npmjs.org/nanoid/-/nanoid-3.3.18.tgz",
+        "fileCount": 25,
+        "integrity": "sha512-DTg4MJbGMWkfi6VZFdNt2/caMbQy4Ou+Op/hJQvGEWcnVfoA1QA+xzRKAzw9jD6+GVOOeYr/mIcuDSdug6F6+w==",
+        "signatures": [
+          {
+            "sig": "MEQCICi/NpJkcXppd6BuQtgxSBgSxLeFk0ru/c0Fx8qeAlXKAiAWfb3xZgl3aXFvP6ImzWzDBcV+cr17V7unSutMF/pkdA==",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "attestations": {
+          "url": "https://registry.npmjs.org/-/npm/v1/attestations/nanoid@3.3.18",
+          "provenance": {
+            "predicateType": "https://slsa.dev/provenance/v1"
+          }
+        },
+        "unpackedSize": 25198
+      },
+      "github_matches": [],
+      "node18_engine_supported": true,
+      "node20_engine_supported": true
+    },
+    {
+      "package": "colord",
+      "version": "2.9.4",
+      "engines": {},
+      "dependencies": {},
+      "dist": {
+        "shasum": "1ad8184b18baf9fa948acf2b9531d2ce126fb31c",
+        "tarball": "https://registry.npmjs.org/colord/-/colord-2.9.4.tgz",
+        "fileCount": 67,
+        "integrity": "sha512-z0nTt5300AIviCn9FTEL4G2DzPkfEDfghx6Do0ZfM3u0rOINBtfw2H8lD4VXyZF/o8HTzzyiCztaG2X/+IMeZA==",
+        "signatures": [
+          {
+            "sig": "MEUCIQDMyEkgxvmmWXlCfwf8bsDYI2lzgxss024tRYta6xqeBgIgRZya7ndgdUev4DM8+i6XgEQeyvwnhLfNiY1/tKjzluA=",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          },
+          {
+            "sig": "MEUCID9VkGorcgvt88eYej/NFWBYanbGFFVALFrnZ/kjNjFbAiEAjyocJvwmzYgLlm0Z5Jwd0V7ZmZUwWRFtnV+40rMs9qw=",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "unpackedSize": 124651
+      },
+      "github_matches": [],
+      "node18_engine_supported": true,
+      "node20_engine_supported": true
+    },
+    {
+      "package": "ajv",
+      "version": "8.18.0",
+      "engines": {},
+      "dependencies": {
+        "fast-uri": "^3.0.1",
+        "fast-deep-equal": "^3.1.3",
+        "require-from-string": "^2.0.2",
+        "json-schema-traverse": "^1.0.0"
+      },
+      "dist": {
+        "shasum": "8864186b6738d003eb3a933172bb3833e10cefbc",
+        "tarball": "https://registry.npmjs.org/ajv/-/ajv-8.18.0.tgz",
+        "fileCount": 466,
+        "integrity": "sha512-PlXPeEWMXMZ7sPYOHqmDyCJzcfNrUr3fGNKtezX14ykXOEIvyK81d+qydx89KY5O71FKMPaQ2vBfBFI5NHR63A==",
+        "signatures": [
+          {
+            "sig": "MEUCIBYRzQWDWjeT413wE9wkaiie/nGGpDSVQUVAEyNyYEkpAiEAy3Ds+WXQGEquub4dqwFJ6Bow4olh+fp9uGy91ALmGkg=",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "unpackedSize": 1033513
+      },
+      "github_matches": [],
+      "node18_engine_supported": true,
+      "node20_engine_supported": true
+    }
+  ],
+  "scans": {
+    "npm": {
+      "baseline_advisory_range_matches": 12,
+      "candidate_advisory_range_matches": 7,
+      "new_advisory_range_matches": [],
+      "osv_package_version_queries": 737,
+      "changed_package_versions_osv": [
+        {
+          "package": "brace-expansion",
+          "version": "5.0.12",
+          "vulnerabilities": []
+        },
+        {
+          "package": "nanoid",
+          "version": "3.3.18",
+          "vulnerabilities": []
+        },
+        {
+          "package": "source-map-js",
+          "version": "1.2.2",
+          "vulnerabilities": []
+        }
+      ],
+      "remaining_matches": [
+        {
+          "package": "@humanfs/node",
+          "url": "https://github.com/advisories/GHSA-p498-v437-472g",
+          "range": "<0.16.8"
+        },
+        {
+          "package": "@vitest/mocker",
+          "url": "https://github.com/advisories/GHSA-82fw-gwwq-j7x9",
+          "range": ">=2.1.0 <4.1.11"
+        },
+        {
+          "package": "sprintf-js",
+          "url": "https://github.com/advisories/GHSA-hp3w-g68c-fv3c",
+          "range": "<=1.1.3"
+        },
+        {
+          "package": "tinypool",
+          "url": "https://github.com/advisories/GHSA-5gmw-xhrv-c9v3",
+          "range": "<=2.1.0"
+        },
+        {
+          "package": "tinypool",
+          "url": "https://github.com/advisories/GHSA-85c8-ppgw-ccpr",
+          "range": "<2.1.2"
+        },
+        {
+          "package": "uuid",
+          "url": "https://github.com/advisories/GHSA-w5hq-g745-h8pq",
+          "range": "<11.1.1"
+        },
+        {
+          "package": "vitest",
+          "url": "https://github.com/advisories/GHSA-82fw-gwwq-j7x9",
+          "range": ">=2.1.0 <4.1.11"
+        }
+      ]
+    },
+    "yarn": {
+      "baseline_advisory_range_matches": 8,
+      "candidate_advisory_range_matches": 7,
+      "new_advisory_range_matches": [],
+      "osv_package_version_queries": 734,
+      "changed_package_versions_osv": [
+        {
+          "package": "nanoid",
+          "version": "3.3.18",
+          "vulnerabilities": []
+        }
+      ],
+      "remaining_matches": [
+        {
+          "package": "@humanfs/node",
+          "url": "https://github.com/advisories/GHSA-p498-v437-472g",
+          "range": "<0.16.8"
+        },
+        {
+          "package": "@vitest/mocker",
+          "url": "https://github.com/advisories/GHSA-82fw-gwwq-j7x9",
+          "range": ">=2.1.0 <4.1.11"
+        },
+        {
+          "package": "sprintf-js",
+          "url": "https://github.com/advisories/GHSA-hp3w-g68c-fv3c",
+          "range": "<=1.1.3"
+        },
+        {
+          "package": "tinypool",
+          "url": "https://github.com/advisories/GHSA-5gmw-xhrv-c9v3",
+          "range": "<=2.1.0"
+        },
+        {
+          "package": "tinypool",
+          "url": "https://github.com/advisories/GHSA-85c8-ppgw-ccpr",
+          "range": "<2.1.2"
+        },
+        {
+          "package": "uuid",
+          "url": "https://github.com/advisories/GHSA-w5hq-g745-h8pq",
+          "range": "<11.1.1"
+        },
+        {
+          "package": "vitest",
+          "url": "https://github.com/advisories/GHSA-82fw-gwwq-j7x9",
+          "range": ">=2.1.0 <4.1.11"
+        }
+      ]
+    }
+  },
+  "reviewed_exceptions": [
+    {
+      "package": "@humanfs/node",
+      "advisory": "https://github.com/advisories/GHSA-p498-v437-472g",
+      "disposition": "reviewed_not_used",
+      "reason": "ESLint filesystem tooling only. The consuming ESLint code does not call copy/copyAll; no application import reaches the affected symlink-copy API."
+    },
+    {
+      "package": "@vitest/mocker",
+      "advisory": "https://github.com/advisories/GHSA-82fw-gwwq-j7x9",
+      "disposition": "reviewed_not_used",
+      "reason": "Vitest development tooling only. No checked-in tests, browser-mode server, mockerPlugin or interceptorPlugin registration; the vulnerable public mock-registration/file-serving path is absent."
+    },
+    {
+      "package": "sprintf-js",
+      "advisory": "https://github.com/advisories/GHSA-hp3w-g68c-fv3c",
+      "disposition": "reviewed_not_used",
+      "reason": "Only argparse CLI/help tooling consumes repository-controlled format/help strings. No application accepts attacker-controlled format strings. No published patched version."
+    },
+    {
+      "package": "tinypool",
+      "advisory": "https://github.com/advisories/GHSA-5gmw-xhrv-c9v3",
+      "disposition": "reviewed_not_used",
+      "reason": "Vitest-only development dependency with no checked-in tests, CI Vitest execution or application worker-pool calls. The affected worker options are not exercised. The patched 2.1.2 branch requires Node 20 or >=22 and is outside Vitest 3\u2019s ^1.1.1 range; reassess if tests/workers are added."
+    },
+    {
+      "package": "tinypool",
+      "advisory": "https://github.com/advisories/GHSA-85c8-ppgw-ccpr",
+      "disposition": "reviewed_not_used",
+      "reason": "Vitest-only development dependency with no checked-in tests, CI Vitest execution or application worker-pool calls. The affected worker options are not exercised. The patched 2.1.2 branch requires Node 20 or >=22 and is outside Vitest 3\u2019s ^1.1.1 range; reassess if tests/workers are added."
+    },
+    {
+      "package": "uuid",
+      "advisory": "https://github.com/advisories/GHSA-w5hq-g745-h8pq",
+      "disposition": "reviewed_not_used",
+      "reason": "Storybook addon-actions uses uuid.v4() without a caller-provided buffer; the advisory affects v3/v5/v6 buffer writes, which this consumer does not use."
+    },
+    {
+      "package": "vitest",
+      "advisory": "https://github.com/advisories/GHSA-82fw-gwwq-j7x9",
+      "disposition": "reviewed_not_used",
+      "reason": "No checked-in tests or CI Vitest execution, and no browser-mode mock-registration server. The affected file-read path is absent. Vitest 4 would drop Node 18 support."
+    }
+  ]
+}
